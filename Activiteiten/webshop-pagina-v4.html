@@ -1,0 +1,2105 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&display=swap');
+
+/* ==================== RESET & VARIABLES ==================== */
+.td-ws, .td-ws *, .td-ws *::before, .td-ws *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+.td-ws {
+  --bg: #FAFAF8;
+  --bg-warm: #F5F3EE;
+  --bg-dark: #1A1A1A;
+  --bg-card: #FFFFFF;
+  --text: #1A1A1A;
+  --text-secondary: #5A5A58;
+  --text-light: #8A8A86;
+  --text-inverse: #FAFAF8;
+  --accent: #C45D2C;
+  --accent-hover: #A84E24;
+  --accent-light: #F0DDD2;
+  --accent-subtle: #FDF6F1;
+  --border: #E8E6E1;
+  --border-dark: #D5D2CC;
+  --success: #3A8B5C;
+  --navy: #1B2A4A;
+  --navy-light: #2D4470;
+  --gold: #C49A3C;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+  --shadow-xl: 0 24px 64px rgba(0,0,0,0.16);
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Outfit', -apple-system, sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+.td-ws a { color: inherit; text-decoration: none; }
+.td-ws img { max-width: 100%; display: block; }
+.td-ws button { cursor: pointer; border: none; background: none; font-family: inherit; }
+.td-ws ul { list-style: none; }
+
+/* ==================== UTILITY ==================== */
+.td-ws .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+@media (max-width: 768px) { .td-ws .container { padding: 0 20px; } }
+
+.td-ws .section-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.td-ws .section-label::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.td-ws .section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.td-ws .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  transition: all 0.3s var(--ease);
+  letter-spacing: 0.01em;
+}
+.td-ws .btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(196,93,44,0.3);
+}
+.td-ws .btn-primary svg { transition: transform 0.3s var(--ease); }
+.td-ws .btn-primary:hover svg { transform: translateX(4px); }
+
+.td-ws .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: transparent;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid var(--border-dark);
+  border-radius: 8px;
+  transition: all 0.3s var(--ease);
+}
+.td-ws .btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ==================== TOPBAR ==================== */
+.td-ws .topbar {
+  background: var(--navy);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.8rem;
+  padding: 8px 0;
+  letter-spacing: 0.02em;
+}
+.td-ws .topbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.td-ws .topbar-left { display: flex; gap: 24px; align-items: center; }
+.td-ws .topbar-left span { display: flex; align-items: center; gap: 6px; }
+.td-ws .topbar-right { display: flex; gap: 16px; align-items: center; }
+.td-ws .topbar-right a { color: rgba(255,255,255,0.7); transition: color 0.2s; }
+.td-ws .topbar-right a:hover { color: white; }
+.td-ws .cert-badge {
+  background: rgba(255,255,255,0.12);
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 640px) {
+  .td-ws .topbar-left span:not(:first-child) { display: none; }
+}
+
+/* ==================== HEADER ==================== */
+.td-ws .header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.3s;
+}
+.td-ws .header.scrolled { box-shadow: var(--shadow-md); }
+.td-ws .header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+}
+.td-ws .logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.td-ws .logo span { color: var(--accent); }
+.td-ws .logo-sub {
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  display: block;
+  margin-top: -2px;
+}
+
+.td-ws .nav { display: flex; align-items: center; gap: 6px; }
+.td-ws .nav a {
+  padding: 8px 16px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-radius: 6px;
+  transition: all 0.2s;
+  position: relative;
+}
+.td-ws .nav a:hover { color: var(--text); background: var(--bg-warm); }
+.td-ws .nav a.active { color: var(--accent); }
+
+.td-ws .nav-dropdown { position: relative; }
+.td-ws .nav-dropdown > a::after {
+  content: '';
+  display: inline-block;
+  width: 0; height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid currentColor;
+  margin-left: 6px;
+  vertical-align: middle;
+  transition: transform 0.2s;
+}
+.td-ws .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 260px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.25s var(--ease);
+  z-index: 50;
+}
+.td-ws .nav-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.td-ws .dropdown-menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  transition: all 0.15s;
+}
+.td-ws .dropdown-menu a:hover {
+  background: var(--accent-subtle);
+  color: var(--accent);
+}
+.td-ws .dropdown-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--bg-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.td-ws .dropdown-menu a:hover .dropdown-icon { background: var(--accent-light); }
+
+.td-ws .header-actions { display: flex; align-items: center; gap: 8px; }
+.td-ws .icon-btn {
+  width: 42px; height: 42px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+  position: relative;
+}
+.td-ws .icon-btn:hover { background: var(--bg-warm); color: var(--text); }
+.td-ws .icon-btn .badge {
+  position: absolute;
+  top: 4px; right: 4px;
+  width: 18px; height: 18px;
+  background: var(--accent);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.td-ws .btn-offerte {
+  padding: 10px 24px;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  transition: all 0.3s var(--ease);
+}
+.td-ws .btn-offerte:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(196,93,44,0.25);
+}
+
+.td-ws .mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+}
+.td-ws .mobile-toggle span {
+  width: 22px; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+@media (max-width: 960px) {
+  .td-ws .nav, .td-ws .header-actions .icon-btn { display: none; }
+  .td-ws .mobile-toggle { display: flex; }
+}
+
+/* ==================== HERO ==================== */
+.td-ws .hero {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  background: var(--bg-dark);
+  overflow: hidden;
+}
+.td-ws .hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(196,93,44,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(27,42,74,0.2) 0%, transparent 50%);
+  z-index: 1;
+}
+.td-ws .hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  z-index: 1;
+}
+.td-ws .hero .container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.td-ws .hero-content { max-width: 560px; }
+.td-ws .hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 6px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 28px;
+  backdrop-filter: blur(4px);
+}
+.td-ws .hero-eyebrow .dot {
+  width: 8px; height: 8px;
+  background: var(--success);
+  border-radius: 50%;
+  animation: tdwsPulse 2s infinite;
+}
+@keyframes tdwsPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+.td-ws .hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.08;
+  color: white;
+  margin-bottom: 24px;
+  letter-spacing: -0.03em;
+}
+.td-ws .hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+  position: relative;
+}
+.td-ws .hero h1 em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+  opacity: 0.4;
+  border-radius: 2px;
+}
+.td-ws .hero p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 36px;
+  max-width: 460px;
+}
+.td-ws .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+.td-ws .hero-buttons .btn-secondary {
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.2);
+}
+.td-ws .hero-buttons .btn-secondary:hover {
+  border-color: rgba(255,255,255,0.5);
+  color: white;
+}
+
+.td-ws .hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.td-ws .hero-stat .number {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+.td-ws .hero-stat .number span { color: var(--accent); }
+.td-ws .hero-stat .label {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.45);
+  margin-top: 4px;
+  letter-spacing: 0.03em;
+}
+
+.td-ws .hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.td-ws .hero-card {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, #2A2A28, #1A1A18);
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+.td-ws .hero-card-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+}
+.td-ws .hero-card-visual {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.td-ws .door-illustration {
+  width: 200px;
+  height: 320px;
+  position: relative;
+}
+.td-ws .door-frame {
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(255,255,255,0.15);
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+.td-ws .door-panel-left, .td-ws .door-panel-right {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(196,93,44,0.08);
+  border: 1px solid rgba(196,93,44,0.2);
+  transition: transform 1.5s var(--ease);
+}
+.td-ws .door-panel-left { left: 0; transform: translateX(0); }
+.td-ws .door-panel-right { right: 0; transform: translateX(0); }
+.td-ws .door-illustration:hover .door-panel-left { transform: translateX(-90%); }
+.td-ws .door-illustration:hover .door-panel-right { transform: translateX(90%); }
+.td-ws .door-sensor {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 12px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.td-ws .door-sensor::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px; height: 6px;
+  background: var(--success);
+  border-radius: 50%;
+  animation: tdwsPulse 2s infinite;
+}
+.td-ws .hero-card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  width: fit-content;
+  margin-bottom: 12px;
+  backdrop-filter: blur(8px);
+}
+.td-ws .hero-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.td-ws .hero-card p {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 0;
+}
+
+.td-ws .floating-badge {
+  position: absolute;
+  background: white;
+  border-radius: 12px;
+  padding: 14px 18px;
+  box-shadow: var(--shadow-lg);
+  z-index: 3;
+  animation: tdwsFloat 4s ease-in-out infinite;
+}
+.td-ws .floating-badge.badge-1 {
+  top: 10%;
+  right: -20px;
+  animation-delay: 0s;
+}
+.td-ws .floating-badge.badge-2 {
+  bottom: 20%;
+  left: -20px;
+  animation-delay: 1.5s;
+}
+@keyframes tdwsFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.td-ws .floating-badge .fb-icon {
+  width: 32px; height: 32px;
+  background: var(--accent-subtle);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+.td-ws .floating-badge .fb-text {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.td-ws .floating-badge .fb-sub {
+  font-size: 0.65rem;
+  color: var(--text-light);
+}
+
+@media (max-width: 960px) {
+  .td-ws .hero .container { grid-template-columns: 1fr; gap: 40px; }
+  .td-ws .hero-visual { display: none; }
+  .td-ws .hero { min-height: 70vh; }
+}
+
+/* ==================== TRUST BAR ==================== */
+.td-ws .trust-bar {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  padding: 32px 0;
+}
+.td-ws .trust-bar .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.td-ws .trust-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+.td-ws .trust-icon {
+  width: 42px; height: 42px;
+  background: var(--bg-warm);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ==================== CATEGORIES ==================== */
+.td-ws .categories { padding: 100px 0; }
+.td-ws .categories-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.td-ws .categories-header p {
+  max-width: 400px;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.td-ws .categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.td-ws .category-card {
+  position: relative;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.4s var(--ease);
+  cursor: pointer;
+}
+.td-ws .category-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+.td-ws .category-card:first-child {
+  grid-row: span 2;
+}
+.td-ws .category-visual {
+  height: 200px;
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.td-ws .category-card:first-child .category-visual { height: 100%; min-height: 300px; }
+.td-ws .category-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+}
+.td-ws .category-visual svg {
+  position: relative;
+  z-index: 1;
+  opacity: 0.7;
+  transition: all 0.4s var(--ease);
+}
+.td-ws .category-card:hover .category-visual svg {
+  opacity: 1;
+  transform: scale(1.08);
+}
+.td-ws .category-content {
+  padding: 24px;
+}
+.td-ws .category-card:first-child .category-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  color: white;
+}
+.td-ws .category-count {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.td-ws .category-card:first-child .category-count { color: rgba(255,255,255,0.6); }
+.td-ws .category-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  transition: color 0.3s;
+}
+.td-ws .category-card:hover .category-content h3 { color: var(--accent); }
+.td-ws .category-card:first-child:hover .category-content h3 { color: white; }
+.td-ws .category-content p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.td-ws .category-card:first-child .category-content p { color: rgba(255,255,255,0.6); }
+.td-ws .category-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  transition: gap 0.3s var(--ease);
+}
+.td-ws .category-card:hover .category-link { gap: 10px; }
+.td-ws .category-card:first-child .category-link { color: white; }
+
+@media (max-width: 960px) {
+  .td-ws .categories-grid { grid-template-columns: 1fr 1fr; }
+  .td-ws .category-card:first-child { grid-row: span 1; }
+  .td-ws .category-card:first-child .category-visual { min-height: 200px; }
+}
+@media (max-width: 640px) {
+  .td-ws .categories-grid { grid-template-columns: 1fr; }
+}
+
+/* ==================== PRODUCTS SHOWCASE ==================== */
+.td-ws .products { padding: 100px 0; background: var(--bg-warm); }
+.td-ws .products-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.td-ws .products-header .section-label { justify-content: center; }
+.td-ws .products-header .section-label::before { display: none; }
+.td-ws .products-header p {
+  max-width: 540px;
+  margin: 16px auto 0;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+.td-ws .products-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.td-ws .tab-btn {
+  padding: 10px 22px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: white;
+  transition: all 0.3s var(--ease);
+}
+.td-ws .tab-btn:hover { border-color: var(--accent); color: var(--accent); }
+.td-ws .tab-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.td-ws .products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.td-ws .product-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.35s var(--ease);
+  position: relative;
+}
+.td-ws .product-card:hover {
+  border-color: transparent;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-6px);
+}
+.td-ws .product-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  padding: 4px 10px;
+  background: var(--accent);
+  color: white;
+  font-size: 0.68rem;
+  font-weight: 700;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.td-ws .product-badge.new { background: var(--success); }
+.td-ws .product-badge.popular { background: var(--navy); }
+.td-ws .product-img {
+  height: 220px;
+  background: linear-gradient(135deg, #F8F6F3, #EBE8E3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.td-ws .product-img svg {
+  opacity: 0.35;
+  transition: all 0.4s var(--ease);
+}
+.td-ws .product-card:hover .product-img svg {
+  opacity: 0.55;
+  transform: scale(1.05);
+}
+.td-ws .product-quick-view {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  padding: 10px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s var(--ease);
+  cursor: pointer;
+}
+.td-ws .product-card:hover .product-quick-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+.td-ws .product-info { padding: 20px; }
+.td-ws .product-brand {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-light);
+  margin-bottom: 4px;
+}
+.td-ws .product-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.td-ws .product-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.td-ws .product-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.td-ws .product-specs {
+  display: flex;
+  gap: 12px;
+}
+.td-ws .product-spec {
+  font-size: 0.7rem;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.td-ws .product-action {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+.td-ws .product-action:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+@media (max-width: 1100px) { .td-ws .products-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .td-ws .products-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .td-ws .products-grid { grid-template-columns: 1fr; } }
+
+/* ==================== ACCESSORIES ==================== */
+.td-ws .accessories { padding: 100px 0; }
+.td-ws .accessories-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+.td-ws .accessory-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 16px;
+  text-align: center;
+  transition: all 0.35s var(--ease);
+  cursor: pointer;
+}
+.td-ws .accessory-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+.td-ws .accessory-icon {
+  width: 56px; height: 56px;
+  background: var(--bg-warm);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+  transition: all 0.3s var(--ease);
+}
+.td-ws .accessory-card:hover .accessory-icon {
+  background: var(--accent-light);
+}
+.td-ws .accessory-card h4 {
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.td-ws .accessory-card p {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+@media (max-width: 960px) { .td-ws .accessories-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px) { .td-ws .accessories-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ==================== CTA BANNER ==================== */
+.td-ws .cta-banner {
+  padding: 100px 0;
+  background: var(--bg-dark);
+  position: relative;
+  overflow: hidden;
+}
+.td-ws .cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(196,93,44,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(27,42,74,0.2) 0%, transparent 50%);
+}
+.td-ws .cta-banner .container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.td-ws .cta-content .section-label { color: rgba(255,255,255,0.5); }
+.td-ws .cta-content .section-label::before { background: rgba(255,255,255,0.3); }
+.td-ws .cta-content .section-title { color: white; margin-bottom: 20px; }
+.td-ws .cta-content p {
+  color: rgba(255,255,255,0.55);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 440px;
+}
+.td-ws .cta-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.td-ws .cta-feature {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.td-ws .cta-feature-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: rgba(196,93,44,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.td-ws .cta-feature h4 {
+  font-size: 0.9rem;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.td-ws .cta-feature p {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0;
+  max-width: none;
+}
+
+@media (max-width: 960px) {
+  .td-ws .cta-banner .container { grid-template-columns: 1fr; }
+  .td-ws .cta-features { grid-template-columns: 1fr; }
+}
+
+/* ==================== BRANDS ==================== */
+.td-ws .brands {
+  padding: 80px 0;
+  background: white;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.td-ws .brands-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.td-ws .brands-header .section-label { justify-content: center; }
+.td-ws .brands-header .section-label::before { display: none; }
+.td-ws .brands-scroll {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 56px;
+  flex-wrap: wrap;
+}
+.td-ws .brand-item {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--border-dark);
+  transition: color 0.3s;
+  cursor: default;
+  letter-spacing: -0.01em;
+}
+.td-ws .brand-item:hover { color: var(--text); }
+
+/* ==================== CONTACT SECTION ==================== */
+.td-ws .contact { padding: 100px 0; background: var(--bg-warm); }
+.td-ws .contact .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.td-ws .contact-form-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: var(--shadow-sm);
+}
+.td-ws .contact-form-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.td-ws .contact-form-card > p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 28px;
+}
+.td-ws .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.td-ws .form-group { display: flex; flex-direction: column; gap: 6px; }
+.td-ws .form-group.full { grid-column: span 2; }
+.td-ws .form-group label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.td-ws .form-group input, .td-ws .form-group select, .td-ws .form-group textarea {
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--bg);
+  transition: all 0.2s;
+  outline: none;
+}
+.td-ws .form-group input:focus, .td-ws .form-group select:focus, .td-ws .form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+.td-ws .form-group textarea { resize: vertical; min-height: 100px; }
+
+.td-ws .contact-info-card {
+  padding: 40px 0;
+}
+.td-ws .contact-info-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.td-ws .contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 36px;
+}
+.td-ws .contact-info-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.td-ws .contact-info-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--accent-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.td-ws .contact-info-text h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.td-ws .contact-info-text p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+.td-ws .service-hours {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+}
+.td-ws .service-hours h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.td-ws .service-hours-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.td-ws .sh-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+}
+.td-ws .sh-row .day { color: var(--text-secondary); }
+.td-ws .sh-row .time { font-weight: 600; }
+.td-ws .sh-row .time.highlight { color: var(--accent); }
+
+@media (max-width: 768px) {
+  .td-ws .contact .container { grid-template-columns: 1fr; }
+  .td-ws .form-grid { grid-template-columns: 1fr; }
+  .td-ws .form-group.full { grid-column: span 1; }
+}
+
+/* ==================== FOOTER ==================== */
+.td-ws .footer {
+  background: var(--bg-dark);
+  color: rgba(255,255,255,0.6);
+  padding: 80px 0 0;
+}
+.td-ws .footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.td-ws .footer-brand .logo { color: white; margin-bottom: 16px; }
+.td-ws .footer-brand p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  max-width: 320px;
+  margin-bottom: 20px;
+}
+.td-ws .footer-certs {
+  display: flex;
+  gap: 10px;
+}
+.td-ws .footer-cert {
+  padding: 6px 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.5);
+}
+.td-ws .footer-col h4 {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 20px;
+}
+.td-ws .footer-col a {
+  display: block;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.6);
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+.td-ws .footer-col a:hover { color: white; }
+
+.td-ws .footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.3);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .td-ws .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .td-ws .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* ==================== ANIMATIONS ==================== */
+.td-ws .fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.td-ws .fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.td-ws .stagger-1 { transition-delay: 0.1s; }
+.td-ws .stagger-2 { transition-delay: 0.2s; }
+.td-ws .stagger-3 { transition-delay: 0.3s; }
+.td-ws .stagger-4 { transition-delay: 0.4s; }
+.td-ws .stagger-5 { transition-delay: 0.5s; }
+
+/* ==================== MOBILE MENU ==================== */
+.td-ws .mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+.td-ws .mobile-nav.open { opacity: 1; visibility: visible; }
+.td-ws .mobile-nav-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 320px;
+  max-width: 85%;
+  height: 100%;
+  background: white;
+  padding: 24px;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.4s var(--ease);
+}
+.td-ws .mobile-nav.open .mobile-nav-panel { transform: translateX(0); }
+.td-ws .mobile-nav-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  margin-left: auto;
+  background: var(--bg-warm);
+}
+.td-ws .mobile-nav a {
+  display: block;
+  padding: 12px 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+.td-ws .mobile-nav a:last-child { border: none; }
+
+@media (max-width: 960px) {
+  .td-ws .mobile-nav { display: block; }
+}
+</style>
+
+<div class="td-ws">
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +31 6 84 30 5663
+      </span>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@todoors.nl
+      </span>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Artemisweg 115I, Lelystad
+      </span>
+    </div>
+    <div class="topbar-right">
+      <span class="cert-badge">EN16005</span>
+      <span class="cert-badge">NEN3140</span>
+      <a href="https://www.todoors.nl/service/" title="Service">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header" id="tdwsHeader">
+  <div class="container">
+    <a href="https://www.todoors.nl/" class="logo">
+      To<span>Doors</span>
+      <span class="logo-sub" style="margin-left:8px;">B2B Webshop</span>
+    </a>
+
+    <nav class="nav">
+      <a href="#producten" class="active">Producten</a>
+      <div class="nav-dropdown">
+        <a href="#categorieen">Categorieën</a>
+        <div class="dropdown-menu">
+          <a href="https://www.todoors.nl/automatische-schuifdeuren/">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/></svg></div>
+            <div><div style="font-weight:600;color:var(--text);">Schuifdeuren</div><div style="font-size:0.75rem;color:var(--text-light);">Enkel · Dubbel · Telescopisch</div></div>
+          </a>
+          <a href="https://www.todoors.nl/automatische-draaideuren/">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3"/><rect x="3" y="3" width="12" height="18" rx="1"/></svg></div>
+            <div><div style="font-weight:600;color:var(--text);">Draaideuren</div><div style="font-size:0.75rem;color:var(--text-light);">Glijarm · Knikarm · Dubbel</div></div>
+          </a>
+          <a href="https://www.todoors.nl/deurdrangers/">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="3" y="3" width="7" height="18" rx="1"/><line x1="14" y1="8" x2="21" y2="8"/></svg></div>
+            <div><div style="font-weight:600;color:var(--text);">Deurdrangers</div><div style="font-size:0.75rem;color:var(--text-light);">Glijarm · Knikarm</div></div>
+          </a>
+          <a href="https://www.todoors.nl/harmonica-deuren/">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M3 3v18M7 3v18M11 3v18M15 3v18M19 3v18"/></svg></div>
+            <div><div style="font-weight:600;color:var(--text);">Harmonica Deuren</div><div style="font-size:0.75rem;color:var(--text-light);">Glas · Aluminium</div></div>
+          </a>
+          <a href="https://www.todoors.nl/guillotine-ramen/">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="12"/></svg></div>
+            <div><div style="font-weight:600;color:var(--text);">Guillotine Ramen</div><div style="font-size:0.75rem;color:var(--text-light);">Automatisch · Ventilatie</div></div>
+          </a>
+          <a href="https://www.todoors.nl/elektronische-toegang/">
+            <div class="dropdown-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+            <div><div style="font-weight:600;color:var(--text);">Elektronische Toegang</div><div style="font-size:0.75rem;color:var(--text-light);">Sensoren · Readers · Modules</div></div>
+          </a>
+        </div>
+      </div>
+      <a href="#accessoires">Accessoires</a>
+      <a href="https://www.todoors.nl/service/">Service</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" title="Zoeken" onclick="alert('Zoekfunctie wordt binnenkort toegevoegd')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="icon-btn" title="Offertemand">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="badge">0</span>
+      </button>
+      <a href="https://www.todoors.nl/informatieverzoek/" class="btn-offerte">Offerte aanvragen</a>
+      <button class="mobile-toggle" onclick="document.getElementById('tdwsMobileNav').classList.add('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="tdwsMobileNav" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="mobile-nav-panel">
+    <button class="mobile-nav-close" onclick="document.getElementById('tdwsMobileNav').classList.remove('open')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <a href="#producten">Producten</a>
+    <a href="https://www.todoors.nl/automatische-schuifdeuren/">Schuifdeuren</a>
+    <a href="https://www.todoors.nl/automatische-draaideuren/">Draaideuren</a>
+    <a href="https://www.todoors.nl/deurdrangers/">Deurdrangers</a>
+    <a href="https://www.todoors.nl/harmonica-deuren/">Harmonica Deuren</a>
+    <a href="https://www.todoors.nl/guillotine-ramen/">Guillotine Ramen</a>
+    <a href="https://www.todoors.nl/elektronische-toegang/">Elektronische Toegang</a>
+    <a href="#accessoires">Accessoires</a>
+    <a href="https://www.todoors.nl/service/">Service</a>
+    <a href="#contact">Contact</a>
+    <a href="https://www.todoors.nl/informatieverzoek/" style="color:var(--accent);font-weight:600;">Offerte aanvragen</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        B2B Webshop — Nieuw platform actief
+      </div>
+      <h1>Professionele <em>automatische deursystemen</em> voor elk project</h1>
+      <p>Ontdek ons complete assortiment schuifdeuren, draaideuren, deurdrangers en toegangssystemen. Stel uw offerte samen met productconfiguraties op maat.</p>
+      <div class="hero-buttons">
+        <a href="#producten" class="btn-primary">
+          Bekijk assortiment
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="https://www.todoors.nl/informatieverzoek/" class="btn-secondary">Offerte aanvragen</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="number">24/7<span></span></div>
+          <div class="label">Storingsdienst</div>
+        </div>
+        <div class="hero-stat">
+          <div class="number">500<span>+</span></div>
+          <div class="label">Projecten gerealiseerd</div>
+        </div>
+        <div class="hero-stat">
+          <div class="number">100<span>%</span></div>
+          <div class="label">Gecertificeerd</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-visual">
+          <div class="door-illustration">
+            <div class="door-sensor"></div>
+            <div class="door-frame">
+              <div class="door-panel-left"></div>
+              <div class="door-panel-right"></div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card-inner">
+          <div class="hero-card-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Meest verkocht
+          </div>
+          <h3>Automatische Schuifdeur</h3>
+          <p>Dubbelvleugelig · EN16005 gecertificeerd</p>
+        </div>
+      </div>
+      <div class="floating-badge badge-1">
+        <div class="fb-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="fb-text">EN16005</div>
+        <div class="fb-sub">Veiligheidsnorm</div>
+      </div>
+      <div class="floating-badge badge-2">
+        <div class="fb-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="fb-text">24/7</div>
+        <div class="fb-sub">Storingsdienst</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      EN16005 & NEN3140 gecertificeerd
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+      </div>
+      Landelijke dekking & service
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      </div>
+      Betaling op factuur (B2B)
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+      </div>
+      Persoonlijk advies & maatwerk
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categorieen">
+  <div class="container">
+    <div class="categories-header fade-in">
+      <div>
+        <div class="section-label">Productcategorieën</div>
+        <h2 class="section-title">Onze oplossingen<br>voor elk project</h2>
+      </div>
+      <p>Van automatische schuifdeuren tot geavanceerde toegangscontrole — wij leveren complete deursystemen voor zakelijke toepassingen.</p>
+    </div>
+
+    <div class="categories-grid">
+      <a href="https://www.todoors.nl/automatische-schuifdeuren/" class="category-card fade-in stagger-1">
+        <div class="category-visual" style="background: linear-gradient(135deg, #1B2A4A, #2D4470);">
+          <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1"><rect x="2" y="2" width="20" height="20" rx="2"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="8" y1="8" x2="8" y2="16" stroke-dasharray="2 2"/><line x1="16" y1="8" x2="16" y2="16" stroke-dasharray="2 2"/></svg>
+        </div>
+        <div class="category-content">
+          <div class="category-count">3 types beschikbaar</div>
+          <h3>Automatische Schuifdeuren</h3>
+          <p>Enkelvleugelig, dubbelvleugelig en telescopisch. Breedte tot 5000mm, EN16005 gecertificeerd.</p>
+          <span class="category-link">Bekijk assortiment <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+
+      <a href="https://www.todoors.nl/automatische-draaideuren/" class="category-card fade-in stagger-2">
+        <div class="category-visual" style="background: linear-gradient(135deg, #3A2A1A, #5A4530);">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3"/><rect x="3" y="3" width="12" height="18" rx="1"/></svg>
+        </div>
+        <div class="category-content">
+          <div class="category-count">3 types</div>
+          <h3>Automatische Draaideuren</h3>
+          <p>Glijarm en knikarm uitvoeringen voor elk gebouw.</p>
+          <span class="category-link">Bekijk meer <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+
+      <a href="https://www.todoors.nl/deurdrangers/" class="category-card fade-in stagger-3">
+        <div class="category-visual" style="background: linear-gradient(135deg, #2A3A2A, #3A5030);">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"><rect x="3" y="3" width="7" height="18" rx="1"/><line x1="14" y1="8" x2="21" y2="8"/><circle cx="18" cy="8" r="2"/></svg>
+        </div>
+        <div class="category-content">
+          <div class="category-count">Glijarm & knikarm</div>
+          <h3>Deurdrangers</h3>
+          <p>Brandveilig, gecontroleerde deurbeweging.</p>
+          <span class="category-link">Bekijk meer <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+
+      <a href="https://www.todoors.nl/harmonica-deuren/" class="category-card fade-in stagger-4">
+        <div class="category-visual" style="background: linear-gradient(135deg, #2A2535, #403550);">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"><path d="M4 3v18M8 3v18M12 3v18M16 3v18M20 3v18"/></svg>
+        </div>
+        <div class="category-content">
+          <div class="category-count">Glas & aluminium</div>
+          <h3>Harmonica Deuren</h3>
+          <p>Ruimtebesparend opvouwbaar deursysteem.</p>
+          <span class="category-link">Bekijk meer <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+
+      <a href="https://www.todoors.nl/guillotine-ramen/" class="category-card fade-in stagger-4">
+        <div class="category-visual" style="background: linear-gradient(135deg, #352A20, #504030);">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="12"/></svg>
+        </div>
+        <div class="category-content">
+          <div class="category-count">Automatisch</div>
+          <h3>Guillotine Ramen</h3>
+          <p>Moderne ventilatie-oplossing met automatisering.</p>
+          <span class="category-link">Bekijk meer <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+
+      <a href="https://www.todoors.nl/elektronische-toegang/" class="category-card fade-in stagger-5">
+        <div class="category-visual" style="background: linear-gradient(135deg, #1A2A35, #254050);">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg>
+        </div>
+        <div class="category-content">
+          <div class="category-count">6 productgroepen</div>
+          <h3>Elektronische Toegang</h3>
+          <p>Sensoren, readers, GSM-modules en meer.</p>
+          <span class="category-link">Bekijk meer <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS SHOWCASE -->
+<section class="products" id="producten">
+  <div class="container">
+    <div class="products-header fade-in">
+      <div class="section-label">Productassortiment</div>
+      <h2 class="section-title">Populaire producten</h2>
+      <p>Onze meest aangevraagde automatische deursystemen en componenten voor professionele projecten.</p>
+    </div>
+
+    <div class="products-tabs fade-in">
+      <button class="tab-btn active" onclick="tdwsFilterProducts('all', this)">Alle producten</button>
+      <button class="tab-btn" onclick="tdwsFilterProducts('schuif', this)">Schuifdeuren</button>
+      <button class="tab-btn" onclick="tdwsFilterProducts('draai', this)">Draaideuren</button>
+      <button class="tab-btn" onclick="tdwsFilterProducts('dranger', this)">Deurdrangers</button>
+      <button class="tab-btn" onclick="tdwsFilterProducts('toegang', this)">Toegangssystemen</button>
+    </div>
+
+    <div class="products-grid" id="tdwsProductsGrid">
+      <div class="product-card fade-in" data-category="schuif">
+        <span class="product-badge popular">Populair</span>
+        <div class="product-img">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1"><rect x="2" y="2" width="20" height="20" rx="2"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
+          <div class="product-quick-view" onclick="window.location.href='https://www.todoors.nl/automatische-dubbelvleugelige-schuifdeuren/'">Bekijk details →</div>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Record</div>
+          <h3 class="product-name">Dubbelvleugelige Schuifdeur</h3>
+          <p class="product-desc">Automatisch schuifdeursysteem met twee panelen, ideaal voor brede doorgangen.</p>
+          <div class="product-meta">
+            <div class="product-specs">
+              <span class="product-spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> 1400–3000mm</span>
+              <span class="product-spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 24V DC</span>
+            </div>
+            <a href="https://www.todoors.nl/informatieverzoek/" class="product-action" title="Offerte aanvragen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in" data-category="schuif">
+        <div class="product-img">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="2" x2="12" y2="22" stroke-dasharray="3 2"/></svg>
+          <div class="product-quick-view" onclick="window.location.href='https://www.todoors.nl/automatische-enkelvleugelige-schuifdeuren/'">Bekijk details →</div>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Record</div>
+          <h3 class="product-name">Enkelvleugelige Schuifdeur</h3>
+          <p class="product-desc">Compact automatisch schuifdeursysteem voor smalle doorgangen.</p>
+          <div class="product-meta">
+            <div class="product-specs">
+              <span class="product-spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> 700–1500mm</span>
+              <span class="product-spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 24V DC</span>
+            </div>
+            <a href="https://www.todoors.nl/informatieverzoek/" class="product-action" title="Offerte aanvragen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in" data-category="schuif">
+        <span class="product-badge new">Nieuw</span>
+        <div class="product-img">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1"><rect x="1" y="2" width="22" height="20" rx="2"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/></svg>
+          <div class="product-quick-view" onclick="window.location.href='https://www.todoors.nl/automatische-telescopische-schuifdeuren/'">Bekijk details →</div>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Record</div>
+          <h3 class="product-name">Telescopische Schuifdeur</h3>
+          <p class="product-desc">Maximale doorloopbreedte met meerdere schuivende panelen.</p>
+          <div class="product-meta">
+            <div class="product-specs">
+              <span class="product-spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> 1800–5000mm</span>
+              <span class="product-spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 24V DC</span>
+            </div>
+            <a href="https://www.todoors.nl/informatieverzoek/" class="product-action" title="Offerte aanvragen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in" data-category="draai">
+        <div class="product-img">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1"><rect x="3" y="3" width="12" height="18" rx="1"/><path d="M15 12c3 0 6-1 6-3"/></svg>
+          <div class="product-quick-view" onclick="window.location.href='https://www.todoors.nl/automatische-draaideuren-glijarm/'">Bekijk details →</div>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Record</div>
+          <h3 class="product-name">Draaideur Glijarm</h3>
+          <p class="product-desc">Soepele, stille deuropening met compact glijarm mechanisme.</p>
+          <div class="product-meta">
+            <div class="product-specs">
+              <span class="product-spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> EN16005</span>
+            </div>
+            <a href="https://www.todoors.nl/informatieverzoek/" class="product-action" title="Offerte aanvragen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in" data-category="draai">
+        <span class="product-badge popular">Populair</span>
+        <div class="product-img">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1"><rect x="3" y="3" width="12" height="18" rx="1"/><path d="M15 8l4 4-4 4"/></svg>
+          <div class="product-quick-view" onclick="window.location.href='https://www.todoors.nl/automatische-draaideuren-knikarm/'">Bekijk details →</div>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Record · Chopin</div>
+          <h3 class="product-name">Draaideur Knikarm</h3>
+          <p class="product-desc">Veelzijdig knikarmsysteem, breed inzetbaar in commerciële gebouwen.</p>
+          <div class="product-meta">
+            <div class="product-specs">
+              <span class="product-spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> EN16005</span>
+            </div>
+            <a href="https://www.todoors.nl/informatieverzoek/" class="product-action" title="Offerte aanvragen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in" data-category="draai">
+        <div class="product-img">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1"><rect x="2" y="3" width="9" height="18" rx="1"/><rect x="13" y="3" width="9" height="18" rx="1"/></svg>
+          <div class="product-quick-view" onclick="window.location.href='https://www.todoors.nl/dubbelvleugelige-automatische-draaideuren/'">Bekijk details →</div>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">Record</div>
+          <h3 class="product-name">Dubbelvleugelige Draaideur</h3>
+          <p class="product-desc">Twee deurpanelen die gelijktijdig openen voor brede doorgangen.</p>
+          <div class="product-meta">
+            <div class="product-specs">
+              <span class="product-spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> EN16005</span>
+            </div>
+            <a href="https://www.todoors.nl/informatieverzoek/" class="product-action" title="Offerte aanvragen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in" data-category="dranger">
+        <div class="product-img">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1"><rect x="3" y="4" width="6" height="16" rx="1"/><line x1="9" y1="9" x2="18" y2="9"/><rect x="18" y="7" width="3" height="4" rx="1"/></svg>
+          <div class="product-quick-view" onclick="window.location.href='https://www.todoors.nl/deurdrangers/'">Bekijk details →</div>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">ToDoors</div>
+          <h3 class="product-name">Deurdranger Glijarm</h3>
+          <p class="product-desc">Instelbare sluitkracht en snelheid met elegant glijarm design.</p>
+          <div class="product-meta">
+            <div class="product-specs">
+              <span class="product-spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Brandveilig</span>
+            </div>
+            <a href="https://www.todoors.nl/informatieverzoek/" class="product-action" title="Offerte aanvragen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in" data-category="toegang">
+        <span class="product-badge new">Nieuw</span>
+        <div class="product-img">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg>
+          <div class="product-quick-view" onclick="window.location.href='https://www.todoors.nl/elektronische-toegang/'">Bekijk details →</div>
+        </div>
+        <div class="product-info">
+          <div class="product-brand">ToDoors</div>
+          <h3 class="product-name">Elektronische Deurbeslag</h3>
+          <p class="product-desc">Bedienbaar met kaart, telefoon of badge. Vervangt traditionele sleutels.</p>
+          <div class="product-meta">
+            <div class="product-specs">
+              <span class="product-spec"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> NFC & RFID</span>
+            </div>
+            <a href="https://www.todoors.nl/informatieverzoek/" class="product-action" title="Offerte aanvragen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESSORIES -->
+<section class="accessories" id="accessoires">
+  <div class="container">
+    <div class="fade-in" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;"><span style="display:none;"></span>Accessoires & Componenten</div>
+      <h2 class="section-title">Aanvullende componenten</h2>
+      <p style="max-width:480px;margin:16px auto 0;color:var(--text-secondary);font-size:1.05rem;">Alle onderdelen en accessoires voor een complete deurinstallatie.</p>
+    </div>
+
+    <div class="accessories-grid">
+      <a href="https://www.todoors.nl/portfolio/sensoren/" class="accessory-card fade-in">
+        <div class="accessory-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h4>Sensoren</h4>
+        <p>Bewegingsdetectie</p>
+      </a>
+      <a href="https://www.todoors.nl/portfolio/tag-reader/" class="accessory-card fade-in">
+        <div class="accessory-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+        <h4>Tag Readers</h4>
+        <p>Badgetoegang</p>
+      </a>
+      <a href="https://www.todoors.nl/portfolio/gsm-module/" class="accessory-card fade-in">
+        <div class="accessory-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+        <h4>GSM-Modules</h4>
+        <p>Afstandsbediening</p>
+      </a>
+      <a href="https://www.todoors.nl/portfolio/ontvangers/" class="accessory-card fade-in">
+        <div class="accessory-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></div>
+        <h4>Ontvangers</h4>
+        <p>Handzenders</p>
+      </a>
+      <a href="https://www.todoors.nl/portfolio/pulsgevers/" class="accessory-card fade-in">
+        <div class="accessory-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h4>Pulsgevers</h4>
+        <p>Drukknoppen & schakelaars</p>
+      </a>
+      <a href="https://www.todoors.nl/portfolio/elektronische-deurbeslag/" class="accessory-card fade-in">
+        <div class="accessory-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+        <h4>Deurbeslag</h4>
+        <p>Elektronisch slot</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-content fade-in">
+      <div class="section-label">Waarom ToDoors</div>
+      <h2 class="section-title">Uw partner voor<br>automatische deuren</h2>
+      <p>Van advies tot installatie en onderhoud — wij ontzorgen u volledig. Onze gecertificeerde monteurs staan 24/7 voor u klaar.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="https://www.todoors.nl/informatieverzoek/" class="btn-primary">
+          Offerte aanvragen
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="https://www.todoors.nl/over-ons/" class="btn-secondary" style="color:rgba(255,255,255,0.85);border-color:rgba(255,255,255,0.2);">Over ToDoors</a>
+      </div>
+    </div>
+    <div class="cta-features fade-in">
+      <div class="cta-feature">
+        <div class="cta-feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div><h4>24/7 Storingsdienst</h4><p>Altijd bereikbaar, snelle responstijd</p></div>
+      </div>
+      <div class="cta-feature">
+        <div class="cta-feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div><h4>Volledig gecertificeerd</h4><p>EN16005 & NEN3140 conform</p></div>
+      </div>
+      <div class="cta-feature">
+        <div class="cta-feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg></div>
+        <div><h4>Landelijke dekking</h4><p>Service door heel Nederland</p></div>
+      </div>
+      <div class="cta-feature">
+        <div class="cta-feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></div>
+        <div><h4>Persoonlijk advies</h4><p>Maatwerk configuratie op locatie</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="brands">
+  <div class="container">
+    <div class="brands-header fade-in">
+      <div class="section-label">Onze merken &amp; partners</div>
+      <h2 class="section-title" style="font-size:1.8rem;">Wij werken met de beste merken</h2>
+    </div>
+    <div class="brands-scroll fade-in">
+      <div class="brand-item">Record</div>
+      <div class="brand-item">Chopin</div>
+      <div class="brand-item">ToDoors</div>
+      <div class="brand-item">Agile</div>
+      <div class="brand-item">BEA</div>
+      <div class="brand-item">Optex</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-form-card fade-in">
+      <h3>Offerte of informatie aanvragen</h3>
+      <p>Vul het formulier in en ontvang binnen 24 uur een reactie van onze specialisten.</p>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Bedrijfsnaam *</label>
+          <input type="text" placeholder="Uw bedrijfsnaam">
+        </div>
+        <div class="form-group">
+          <label>Contactpersoon *</label>
+          <input type="text" placeholder="Naam">
+        </div>
+        <div class="form-group">
+          <label>E-mailadres *</label>
+          <input type="email" placeholder="email@bedrijf.nl">
+        </div>
+        <div class="form-group">
+          <label>Telefoonnummer</label>
+          <input type="tel" placeholder="+31 6 ...">
+        </div>
+        <div class="form-group full">
+          <label>Productinteresse</label>
+          <select>
+            <option value="">Selecteer een productcategorie...</option>
+            <option>Automatische Schuifdeuren</option>
+            <option>Automatische Draaideuren</option>
+            <option>Deurdrangers</option>
+            <option>Harmonica Deuren</option>
+            <option>Guillotine Ramen</option>
+            <option>Elektronische Toegang</option>
+            <option>Accessoires & Onderdelen</option>
+            <option>Service & Onderhoud</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Uw bericht</label>
+          <textarea placeholder="Beschrijf uw project of vraag..."></textarea>
+        </div>
+        <div class="form-group full">
+          <button class="btn-primary" onclick="alert('Dit formulier is een demonstratie. Ga naar todoors.nl/informatieverzoek voor uw offerte.')">
+            Verstuur aanvraag
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-info-card fade-in">
+      <h3>Neem direct contact op</h3>
+      <div class="contact-info-list">
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div class="contact-info-text"><h4>Telefoon</h4><p>+31 6 84 30 5663</p></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="contact-info-text"><h4>E-mail</h4><p>info@todoors.nl</p></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="contact-info-text"><h4>Adres</h4><p>Artemisweg 115I, Lelystad<br><span style="font-size:0.78rem;color:var(--text-light);">Showroom op afspraak</span></p></div>
+        </div>
+      </div>
+
+      <div class="service-hours">
+        <h4><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Bereikbaarheid</h4>
+        <div class="service-hours-grid">
+          <div class="sh-row"><span class="day">Maandag – Vrijdag</span><span class="time">08:00 – 17:00</span></div>
+          <div class="sh-row"><span class="day">Storingsdienst</span><span class="time highlight">24/7 bereikbaar</span></div>
+          <div class="sh-row"><span class="day">Showroom</span><span class="time">Op afspraak</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">To<span>Doors</span></div>
+        <p>Uw specialist in automatische deuren en systemen. Van advies tot installatie en 24/7 service door heel Nederland.</p>
+        <div class="footer-certs">
+          <span class="footer-cert">EN16005</span>
+          <span class="footer-cert">NEN3140</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Producten</h4>
+        <a href="https://www.todoors.nl/automatische-schuifdeuren/">Schuifdeuren</a>
+        <a href="https://www.todoors.nl/automatische-draaideuren/">Draaideuren</a>
+        <a href="https://www.todoors.nl/deurdrangers/">Deurdrangers</a>
+        <a href="https://www.todoors.nl/harmonica-deuren/">Harmonica Deuren</a>
+        <a href="https://www.todoors.nl/guillotine-ramen/">Guillotine Ramen</a>
+        <a href="https://www.todoors.nl/elektronische-toegang/">Elektronische Toegang</a>
+      </div>
+      <div class="footer-col">
+        <h4>Diensten</h4>
+        <a href="https://www.todoors.nl/service/">Service & Onderhoud</a>
+        <a href="https://www.todoors.nl/informatieverzoek/">Offerte aanvragen</a>
+        <a href="#contact">Contact opnemen</a>
+        <a href="https://www.todoors.nl/over-ons/">Over ToDoors</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+31684305663">+31 6 84 30 5663</a>
+        <a href="mailto:info@todoors.nl">info@todoors.nl</a>
+        <a href="#">Artemisweg 115I<br>Lelystad</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ToDoors. Alle rechten voorbehouden.</span>
+      <span>Automatische deuren en systemen</span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /.td-ws -->
+
+<script>
+(function() {
+  var wrapper = document.querySelector('.td-ws');
+  if (!wrapper) return;
+
+  var header = wrapper.querySelector('.header');
+  if (header) {
+    window.addEventListener('scroll', function() {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    });
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  wrapper.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  wrapper.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      var targetId = this.getAttribute('href');
+      var target = wrapper.querySelector(targetId) || document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        var mobileNav = document.getElementById('tdwsMobileNav');
+        if (mobileNav) mobileNav.classList.remove('open');
+      }
+    });
+  });
+
+  var cartCount = 0;
+  wrapper.querySelectorAll('.product-action').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      cartCount++;
+      var badge = wrapper.querySelector('.badge');
+      if (badge) {
+        badge.textContent = cartCount;
+        badge.style.animation = 'none';
+        badge.offsetHeight;
+        badge.style.animation = 'tdwsPulse 0.3s ease';
+      }
+    });
+  });
+})();
+
+function tdwsFilterProducts(category, btn) {
+  var wrapper = document.querySelector('.td-ws');
+  if (!wrapper) return;
+  wrapper.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  wrapper.querySelectorAll('.product-card').forEach(function(card) {
+    if (category === 'all' || card.dataset.category === category) {
+      card.style.display = '';
+      setTimeout(function() { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 50);
+    } else {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      setTimeout(function() { card.style.display = 'none'; }, 300);
+    }
+  });
+}
+</script>

@@ -1,0 +1,907 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+.tdws-catalog {
+  --white: #FFFFFF;
+  --bg: #F4F6F9;
+  --bg-card: #FFFFFF;
+  --text: #1B2A3B;
+  --text-secondary: #4A5568;
+  --text-light: #718096;
+  --accent: #1A5276;
+  --accent-hover: #154360;
+  --accent-light: #EBF5FB;
+  --green: #1E8449;
+  --green-light: #EAFAF1;
+  --border: #E2E8F0;
+  --border-strong: #CBD5E0;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+  --radius: 10px;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 80px;
+}
+
+.tdws-catalog *, .tdws-catalog *::before, .tdws-catalog *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.tdws-catalog a { color: inherit; text-decoration: none; }
+.tdws-catalog button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ===== CONTAINER ===== */
+.tdws-catalog .tdws-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+@media (max-width: 768px) {
+  .tdws-catalog .tdws-inner { padding: 0 16px; }
+}
+
+/* ===== HEADER ===== */
+.tdws-catalog .tdws-header {
+  background: var(--accent);
+  padding: 40px 0 32px;
+}
+.tdws-catalog .tdws-header-inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.tdws-catalog .tdws-header h1 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.tdws-catalog .tdws-header p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.75);
+  margin-top: 6px;
+  font-weight: 400;
+}
+.tdws-catalog .tdws-header-badge {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.tdws-catalog .tdws-badge {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ===== FILTER BAR ===== */
+.tdws-catalog .tdws-filterbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: var(--shadow-sm);
+}
+.tdws-catalog .tdws-filterbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tdws-catalog .tdws-filterbar-inner::-webkit-scrollbar { display: none; }
+@media (max-width: 768px) {
+  .tdws-catalog .tdws-filterbar-inner { padding: 12px 16px; }
+}
+.tdws-catalog .tdws-filter-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-light);
+  white-space: nowrap;
+  margin-right: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.tdws-catalog .tdws-filter-btn {
+  padding: 7px 18px;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.tdws-catalog .tdws-filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+.tdws-catalog .tdws-filter-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ===== RESULTS BAR ===== */
+.tdws-catalog .tdws-results {
+  padding: 24px 0 8px;
+}
+.tdws-catalog .tdws-results-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tdws-catalog .tdws-results-count {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+.tdws-catalog .tdws-results-count strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.tdws-catalog .tdws-offerte-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  background: var(--green);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.tdws-catalog .tdws-offerte-link:hover { background: #186A3B; }
+
+/* ===== GRID ===== */
+.tdws-catalog .tdws-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 16px 0;
+}
+@media (max-width: 1024px) {
+  .tdws-catalog .tdws-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .tdws-catalog .tdws-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== PRODUCT CARD ===== */
+.tdws-catalog .tdws-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+}
+.tdws-catalog .tdws-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+.tdws-catalog .tdws-card-visual {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.tdws-catalog .tdws-card-visual svg {
+  transition: transform 0.3s;
+}
+.tdws-catalog .tdws-card:hover .tdws-card-visual svg {
+  transform: scale(1.06);
+}
+.tdws-catalog .tdws-card-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.tdws-catalog .tdws-card-tag.popular {
+  background: var(--accent);
+  color: #fff;
+}
+.tdws-catalog .tdws-card-tag.new {
+  background: var(--green);
+  color: #fff;
+}
+.tdws-catalog .tdws-card-tag.top {
+  background: #7D3C98;
+  color: #fff;
+}
+
+.tdws-catalog .tdws-card-body {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tdws-catalog .tdws-card-category {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+.tdws-catalog .tdws-card-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+.tdws-catalog .tdws-card-brand {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+.tdws-catalog .tdws-card-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-top: 4px;
+  flex: 1;
+}
+.tdws-catalog .tdws-card-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.tdws-catalog .tdws-spec-pill {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 3px 9px;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.tdws-catalog .tdws-card-footer {
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.tdws-catalog .tdws-card-detail {
+  font-size: 0.78rem;
+  color: var(--text-light);
+}
+.tdws-catalog .tdws-btn-offerte {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 7px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.tdws-catalog .tdws-btn-offerte:hover { background: var(--accent-hover); }
+
+/* ===== EMPTY STATE ===== */
+.tdws-catalog .tdws-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-light);
+}
+.tdws-catalog .tdws-empty h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+}
+
+/* ===== CTA STRIP ===== */
+.tdws-catalog .tdws-cta {
+  background: var(--accent-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
+.tdws-catalog .tdws-cta h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.tdws-catalog .tdws-cta p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+.tdws-catalog .tdws-btn-large {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: var(--green);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.tdws-catalog .tdws-btn-large:hover { background: #186A3B; }
+</style>
+
+<div class="tdws-catalog">
+
+  <!-- HEADER -->
+  <div class="tdws-header">
+    <div class="tdws-inner">
+      <div class="tdws-header-inner">
+        <div>
+          <h1>Productcatalogus</h1>
+          <p>Automatische deuren, toegangssystemen en componenten voor professionele projecten</p>
+        </div>
+        <div class="tdws-header-badge">
+          <span class="tdws-badge">EN16005</span>
+          <span class="tdws-badge">NEN3140</span>
+          <span class="tdws-badge">B2B</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="tdws-filterbar">
+    <div class="tdws-filterbar-inner">
+      <span class="tdws-filter-label">Filter:</span>
+      <button class="tdws-filter-btn active" onclick="tdwsFilter('all', this)">Alle producten</button>
+      <button class="tdws-filter-btn" onclick="tdwsFilter('schuif', this)">Schuifdeuren</button>
+      <button class="tdws-filter-btn" onclick="tdwsFilter('draai', this)">Draaideuren</button>
+      <button class="tdws-filter-btn" onclick="tdwsFilter('dranger', this)">Deurdrangers</button>
+      <button class="tdws-filter-btn" onclick="tdwsFilter('harmonica', this)">Harmonica Deuren</button>
+      <button class="tdws-filter-btn" onclick="tdwsFilter('guillotine', this)">Guillotine Ramen</button>
+      <button class="tdws-filter-btn" onclick="tdwsFilter('toegang', this)">Elektronische Toegang</button>
+      <button class="tdws-filter-btn" onclick="tdwsFilter('accessoire', this)">Accessoires</button>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="tdws-inner">
+
+    <!-- RESULTS BAR -->
+    <div class="tdws-results">
+      <div class="tdws-results-inner">
+        <p class="tdws-results-count"><strong id="tdwsCount">22</strong> producten gevonden</p>
+        <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-offerte-link">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Offerte aanvragen
+        </a>
+      </div>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div class="tdws-grid" id="tdwsGrid">
+
+      <!-- ===== SCHUIFDEUREN ===== -->
+
+      <div class="tdws-card" data-cat="schuif">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #EBF5FB, #D6EAF8);">
+          <span class="tdws-card-tag popular">Populair</span>
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#1A5276" stroke-width="0.8" opacity="0.5"><rect x="2" y="2" width="20" height="20" rx="2"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="8" y1="7" x2="8" y2="17" stroke-dasharray="2 2"/><line x1="16" y1="7" x2="16" y2="17" stroke-dasharray="2 2"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Schuifdeuren</div>
+          <div class="tdws-card-name">Dubbelvleugelige Schuifdeur</div>
+          <div class="tdws-card-brand">Record</div>
+          <div class="tdws-card-desc">Automatisch schuifdeursysteem met twee panelen voor brede doorgangen. Ideaal voor supermarkten, ziekenhuizen en kantoorgebouwen.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">1400–3000mm</span>
+            <span class="tdws-spec-pill">24V DC</span>
+            <span class="tdws-spec-pill">EN16005</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Incl. montage & certificering</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="tdws-card" data-cat="schuif">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #EBF5FB, #D6EAF8);">
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#1A5276" stroke-width="0.8" opacity="0.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="2" x2="12" y2="22" stroke-dasharray="3 2"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Schuifdeuren</div>
+          <div class="tdws-card-name">Enkelvleugelige Schuifdeur</div>
+          <div class="tdws-card-brand">Record</div>
+          <div class="tdws-card-desc">Compact automatisch schuifdeursysteem voor smalle doorgangen en kleinere entrees.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">700–1500mm</span>
+            <span class="tdws-spec-pill">24V DC</span>
+            <span class="tdws-spec-pill">EN16005</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Incl. montage & certificering</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="tdws-card" data-cat="schuif">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #EBF5FB, #D6EAF8);">
+          <span class="tdws-card-tag new">Nieuw</span>
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#1A5276" stroke-width="0.8" opacity="0.5"><rect x="1" y="2" width="22" height="20" rx="2"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Schuifdeuren</div>
+          <div class="tdws-card-name">Telescopische Schuifdeur</div>
+          <div class="tdws-card-brand">Record</div>
+          <div class="tdws-card-desc">Maximale doorloopbreedte met meerdere schuivende panelen. Geschikt voor logistieke entrees en grote publieke gebouwen.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">1800–5000mm</span>
+            <span class="tdws-spec-pill">24V DC</span>
+            <span class="tdws-spec-pill">EN16005</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Op maat leverbaar</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ===== DRAAIDEUREN ===== -->
+
+      <div class="tdws-card" data-cat="draai">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #F0F4F8, #E2EAF4);">
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#1A5276" stroke-width="0.8" opacity="0.5"><rect x="3" y="3" width="12" height="18" rx="1"/><path d="M15 12c3 0 6-1 6-3"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Draaideuren</div>
+          <div class="tdws-card-name">Draaideur Glijarm</div>
+          <div class="tdws-card-brand">Record</div>
+          <div class="tdws-card-desc">Soepele automatische deuropening via compact glijarm mechanisme. Geschikt voor kantoren, scholen en openbare gebouwen.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">EN16005</span>
+            <span class="tdws-spec-pill">Glijarm</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Incl. montage</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="tdws-card" data-cat="draai">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #F0F4F8, #E2EAF4);">
+          <span class="tdws-card-tag popular">Populair</span>
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#1A5276" stroke-width="0.8" opacity="0.5"><rect x="3" y="3" width="12" height="18" rx="1"/><path d="M15 8l4 4-4 4"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Draaideuren</div>
+          <div class="tdws-card-name">Draaideur Knikarm</div>
+          <div class="tdws-card-brand">Record · Chopin</div>
+          <div class="tdws-card-desc">Veelzijdig knikarmsysteem voor binnendeuren en buitenentrees. Breed inzetbaar in commerciële en institutionele gebouwen.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">EN16005</span>
+            <span class="tdws-spec-pill">Knikarm</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Incl. montage</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="tdws-card" data-cat="draai">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #F0F4F8, #E2EAF4);">
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#1A5276" stroke-width="0.8" opacity="0.5"><rect x="2" y="3" width="9" height="18" rx="1"/><rect x="13" y="3" width="9" height="18" rx="1"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Draaideuren</div>
+          <div class="tdws-card-name">Dubbelvleugelige Draaideur</div>
+          <div class="tdws-card-brand">Record</div>
+          <div class="tdws-card-desc">Twee deurpanelen die gelijktijdig automatisch openen. Ideaal voor drukke doorgangen in publieke en commerciële gebouwen.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">EN16005</span>
+            <span class="tdws-spec-pill">Dubbel</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Incl. montage</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ===== DEURDRANGERS ===== -->
+
+      <div class="tdws-card" data-cat="dranger">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #EAFAF1, #D5F5E3);">
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#1E8449" stroke-width="0.8" opacity="0.5"><rect x="3" y="4" width="6" height="16" rx="1"/><line x1="9" y1="9" x2="18" y2="9"/><rect x="18" y="7" width="3" height="4" rx="1"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Deurdrangers</div>
+          <div class="tdws-card-name">Deurdranger Glijarm</div>
+          <div class="tdws-card-brand">ToDoors</div>
+          <div class="tdws-card-desc">Instelbare sluitkracht en -snelheid. Elegant glijarm design voor branddeuren en doorgangen met verplichte zelfsluitfunctie.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">EN1154</span>
+            <span class="tdws-spec-pill">Brandveilig</span>
+            <span class="tdws-spec-pill">Glijarm</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Diverse sluitkrachten</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="tdws-card" data-cat="dranger">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #EAFAF1, #D5F5E3);">
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#1E8449" stroke-width="0.8" opacity="0.5"><rect x="3" y="4" width="6" height="16" rx="1"/><path d="M9 10l7-2 1 3-7 2z"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Deurdrangers</div>
+          <div class="tdws-card-name">Deurdranger Knikarm</div>
+          <div class="tdws-card-brand">ToDoors</div>
+          <div class="tdws-card-desc">Knikarm deurdranger voor deuren waar een glijarm niet past. Biedt volledige controle over sluitsnelheid en eindpositie.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">EN1154</span>
+            <span class="tdws-spec-pill">Brandveilig</span>
+            <span class="tdws-spec-pill">Knikarm</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Voor alle deurmaten</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ===== HARMONICA DEUREN ===== -->
+
+      <div class="tdws-card" data-cat="harmonica">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #F5EEF8, #E8DAEF);">
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#7D3C98" stroke-width="0.8" opacity="0.5"><path d="M4 3v18M8 3v18M12 3v18M16 3v18M20 3v18"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Harmonica Deuren</div>
+          <div class="tdws-card-name">Harmonica Deur Glas</div>
+          <div class="tdws-card-brand">ToDoors</div>
+          <div class="tdws-card-desc">Ruimtebesparend opvouwbaar glazen deursysteem. Ideaal voor grote openingen in hotels, restaurants en winkelcentra.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">Veiligheidsglas</span>
+            <span class="tdws-spec-pill">Op maat</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Maatwerk mogelijk</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="tdws-card" data-cat="harmonica">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #F5EEF8, #E8DAEF);">
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#7D3C98" stroke-width="0.8" opacity="0.5"><path d="M3 3v18M7 3v18M11 3v18M15 3v18M19 3v18"/><rect x="3" y="3" width="16" height="18" stroke-dasharray="3 2"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Harmonica Deuren</div>
+          <div class="tdws-card-name">Harmonica Deur Aluminium</div>
+          <div class="tdws-card-brand">ToDoors</div>
+          <div class="tdws-card-desc">Aluminium harmonica deursysteem voor industriële en commerciële toepassingen. Robuust, onderhoudsvriendelijk en langdurig.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">Aluminium</span>
+            <span class="tdws-spec-pill">Poedercoating</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Diverse kleuren</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ===== GUILLOTINE RAMEN ===== -->
+
+      <div class="tdws-card" data-cat="guillotine">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #FEF9E7, #FCF3CF);">
+          <span class="tdws-card-tag new">Nieuw</span>
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#B7950B" stroke-width="0.8" opacity="0.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="12"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Guillotine Ramen</div>
+          <div class="tdws-card-name">Automatisch Guillotine Raam</div>
+          <div class="tdws-card-brand">ToDoors</div>
+          <div class="tdws-card-desc">Automatisch omhoog schuivend raam voor ventilatie en doorgifte. Perfect voor keukens, serviceloketten en drive-throughs.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">Automatisch</span>
+            <span class="tdws-spec-pill">Elektrisch</span>
+            <span class="tdws-spec-pill">Op maat</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Maatwerk mogelijk</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="tdws-card" data-cat="guillotine">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #FEF9E7, #FCF3CF);">
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#B7950B" stroke-width="0.8" opacity="0.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="3" x2="12" y2="10"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Guillotine Ramen</div>
+          <div class="tdws-card-name">Ventilatie Guillotine Raam</div>
+          <div class="tdws-card-brand">ToDoors</div>
+          <div class="tdws-card-desc">Elektrisch bedienbaar ventilatiepaneel voor industriële toepassingen. Geschikt voor stallen, fabrieken en opslagruimtes.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">Ventilatie</span>
+            <span class="tdws-spec-pill">Industrieel</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Diverse formaten</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ===== ELEKTRONISCHE TOEGANG ===== -->
+
+      <div class="tdws-card" data-cat="toegang">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #EBF5FB, #D6EAF8);">
+          <span class="tdws-card-tag new">Nieuw</span>
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#1A5276" stroke-width="0.8" opacity="0.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1.5"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Elektronische Toegang</div>
+          <div class="tdws-card-name">Elektronisch Deurbeslag</div>
+          <div class="tdws-card-brand">ToDoors</div>
+          <div class="tdws-card-desc">Slim deurbeslag bedienbaar via NFC-kaart, smartphone of badge. Vervangt traditionele sleutels volledig.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">NFC & RFID</span>
+            <span class="tdws-spec-pill">Bluetooth</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Plug & play installatie</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="tdws-card" data-cat="toegang">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #EBF5FB, #D6EAF8);">
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#1A5276" stroke-width="0.8" opacity="0.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Elektronische Toegang</div>
+          <div class="tdws-card-name">Tag Reader</div>
+          <div class="tdws-card-brand">Agile · BEA</div>
+          <div class="tdws-card-desc">Badgelezer voor toegangscontrole op basis van RFID of NFC. Geschikt voor kantoren, parkeergarages en beveiligde zones.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">RFID</span>
+            <span class="tdws-spec-pill">NFC</span>
+            <span class="tdws-spec-pill">IP65</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Weerbestendig</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="tdws-card" data-cat="toegang">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #EBF5FB, #D6EAF8);">
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#1A5276" stroke-width="0.8" opacity="0.5"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Elektronische Toegang</div>
+          <div class="tdws-card-name">Aanwezigheidssensor</div>
+          <div class="tdws-card-brand">BEA · Optex</div>
+          <div class="tdws-card-desc">Radar- en infraroodsensoren voor betrouwbare activering van automatische deuren. Detecteert personen en voertuigen.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">Radar</span>
+            <span class="tdws-spec-pill">Infrarood</span>
+            <span class="tdws-spec-pill">EN16005</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Instelbaar bereik</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ===== ACCESSOIRES ===== -->
+
+      <div class="tdws-card" data-cat="accessoire">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #F2F3F4, #E5E8EA);">
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#566573" stroke-width="0.8" opacity="0.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Accessoires</div>
+          <div class="tdws-card-name">GSM-Module</div>
+          <div class="tdws-card-brand">ToDoors</div>
+          <div class="tdws-card-desc">Opent automatische deuren op afstand via telefoongesprek of SMS. Geen app nodig — werkt met elk GSM-netwerk.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">GSM</span>
+            <span class="tdws-spec-pill">Afstandsbediening</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Eenvoudige installatie</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="tdws-card" data-cat="accessoire">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #F2F3F4, #E5E8EA);">
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#566573" stroke-width="0.8" opacity="0.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Accessoires</div>
+          <div class="tdws-card-name">Pulsgever / Drukknop</div>
+          <div class="tdws-card-brand">ToDoors</div>
+          <div class="tdws-card-desc">Wandmontage drukknop voor handmatige activering van automatische deuren. Robuust ontwerp voor intensief gebruik.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">IP54</span>
+            <span class="tdws-spec-pill">RVS</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Diverse uitvoeringen</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="tdws-card" data-cat="accessoire">
+        <div class="tdws-card-visual" style="background: linear-gradient(135deg, #F2F3F4, #E5E8EA);">
+          <svg width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="#566573" stroke-width="0.8" opacity="0.5"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+        </div>
+        <div class="tdws-card-body">
+          <div class="tdws-card-category">Accessoires</div>
+          <div class="tdws-card-name">Ontvanger / Handzender</div>
+          <div class="tdws-card-brand">ToDoors</div>
+          <div class="tdws-card-desc">Radiografische ontvanger en bijbehorende handzender voor draadloze bediening van automatische deuren op afstand.</div>
+          <div class="tdws-card-specs">
+            <span class="tdws-spec-pill">433 MHz</span>
+            <span class="tdws-spec-pill">Tot 100m</span>
+          </div>
+        </div>
+        <div class="tdws-card-footer">
+          <span class="tdws-card-detail">Set van 2 zenders</span>
+          <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-offerte">
+            Offerte aanvragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /#tdwsGrid -->
+
+    <!-- CTA STRIP -->
+    <div class="tdws-cta">
+      <div>
+        <h3>Niet gevonden wat u zoekt?</h3>
+        <p>Neem contact op voor een persoonlijk adviesgesprek. Wij leveren maatwerk voor elk project.</p>
+      </div>
+      <a href="https://www.todoors.nl/informatieverzoek/" class="tdws-btn-large">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Offerte of advies aanvragen
+      </a>
+    </div>
+
+  </div><!-- /.tdws-inner -->
+</div><!-- /.tdws-catalog -->
+
+<script>
+function tdwsFilter(cat, btn) {
+  var wrapper = document.querySelector('.tdws-catalog');
+  if (!wrapper) return;
+
+  wrapper.querySelectorAll('.tdws-filter-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  btn.classList.add('active');
+
+  var cards = wrapper.querySelectorAll('.tdws-card');
+  var visible = 0;
+  cards.forEach(function(card) {
+    var show = (cat === 'all' || card.dataset.cat === cat);
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+
+  var countEl = wrapper.querySelector('#tdwsCount');
+  if (countEl) countEl.textContent = visible;
+}
+</script>

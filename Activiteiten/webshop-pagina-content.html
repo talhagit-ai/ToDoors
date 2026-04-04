@@ -1,0 +1,610 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Hind:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --td-yellow: #f8c12c;
+    --td-dark: #1a1a1a;
+    --td-dark2: #303030;
+    --td-white: #ffffff;
+    --td-light: #f6f6f6;
+    --td-border: rgba(0,0,0,0.08);
+    --td-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    --td-shadow-hover: 0 20px 50px rgba(0,0,0,0.15);
+    --td-radius: 12px;
+    --td-transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --td-font-heading: "Outfit", sans-serif;
+    --td-font-body: "Hind", sans-serif;
+}
+
+.td-shop * { box-sizing: border-box; margin: 0; padding: 0; }
+.td-shop { font-family: var(--td-font-body); color: var(--td-dark); line-height: 1.7; background: var(--td-white); }
+.td-shop h1, .td-shop h2, .td-shop h3, .td-shop h4 { font-family: var(--td-font-heading); font-weight: 700; line-height: 1.2; }
+.td-shop p { font-size: 1rem; color: #555; }
+.td-shop a { text-decoration: none; }
+.td-wrap { max-width: 1260px; margin: 0 auto; padding: 0 24px; }
+
+/* ── HERO ── */
+.td-hero {
+    position: relative;
+    min-height: 620px;
+    background: linear-gradient(135deg, rgba(26,26,26,0.88) 0%, rgba(26,26,26,0.55) 100%),
+                url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2070') no-repeat center/cover;
+    display: flex; align-items: center;
+    margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); width: 100vw;
+    color: var(--td-white);
+}
+.td-hero-inner { max-width: 1260px; margin: 0 auto; padding: 80px 24px; width: 100%; }
+.td-hero-badge { display: inline-block; background: var(--td-yellow); color: var(--td-dark); font-family: var(--td-font-heading); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; padding: 6px 16px; border-radius: 4px; margin-bottom: 20px; }
+.td-hero h1 { font-size: 3.2rem; font-weight: 900; text-transform: uppercase; margin-bottom: 16px; letter-spacing: -0.02em; }
+.td-hero h1 span { color: var(--td-yellow); }
+.td-hero p { font-size: 1.2rem; color: rgba(255,255,255,0.85); max-width: 580px; margin-bottom: 32px; }
+.td-btn { display: inline-block; padding: 16px 38px; font-family: var(--td-font-heading); font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.06em; border-radius: 6px; transition: var(--td-transition); cursor: pointer; }
+.td-btn-primary { background: var(--td-yellow); color: var(--td-dark); }
+.td-btn-primary:hover { background: #e6b325; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(248,193,44,0.35); }
+.td-btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.4); margin-left: 12px; }
+.td-btn-outline:hover { border-color: var(--td-yellow); color: var(--td-yellow); }
+
+/* ── TRUST BAR ── */
+.td-trust {
+    background: var(--td-dark); color: var(--td-white);
+    padding: 40px 24px;
+    margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); width: 100vw;
+}
+.td-trust-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 50px; max-width: 1260px; margin: 0 auto; }
+.td-trust-item { text-align: center; }
+.td-trust-item h4 { color: var(--td-yellow); font-size: 2rem; margin-bottom: 4px; }
+.td-trust-item p { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+
+/* ── SECTION BASE ── */
+.td-section { padding: 80px 0; }
+.td-section-alt { background: var(--td-light); margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); width: 100vw; padding: 80px 24px; }
+.td-section-dark { background: var(--td-dark2); color: var(--td-white); margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); width: 100vw; padding: 80px 24px; }
+.td-section-title { text-align: center; margin-bottom: 50px; }
+.td-section-title h2 { font-size: 2.4rem; text-transform: uppercase; margin-bottom: 12px; }
+.td-section-title .td-line { width: 60px; height: 4px; background: var(--td-yellow); margin: 0 auto 16px; border-radius: 2px; }
+.td-section-title p { font-size: 1.05rem; max-width: 650px; margin: 0 auto; color: #777; }
+.td-section-dark .td-section-title p { color: rgba(255,255,255,0.65); }
+
+/* ── CATEGORY CARDS ── */
+.td-cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; max-width: 1260px; margin: 0 auto; }
+.td-cat-card { position: relative; height: 280px; border-radius: var(--td-radius); overflow: hidden; cursor: pointer; transition: var(--td-transition); }
+.td-cat-card:hover { transform: translateY(-6px); box-shadow: var(--td-shadow-hover); }
+.td-cat-card img, .td-cat-bg { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
+.td-cat-bg { background-size: cover; background-position: center; }
+.td-cat-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,26,0.85) 0%, rgba(26,26,26,0.2) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; color: #fff; }
+.td-cat-overlay h3 { font-size: 1.3rem; text-transform: uppercase; margin-bottom: 4px; }
+.td-cat-overlay span { font-size: 0.85rem; color: var(--td-yellow); font-weight: 600; }
+
+/* ── PRODUCT CARDS ── */
+.td-prod-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; max-width: 1260px; margin: 0 auto; }
+.td-prod-card { background: var(--td-white); border-radius: var(--td-radius); overflow: hidden; box-shadow: var(--td-shadow); transition: var(--td-transition); border: 1px solid var(--td-border); }
+.td-prod-card:hover { transform: translateY(-8px); box-shadow: var(--td-shadow-hover); }
+.td-prod-img { height: 200px; background: #eee; background-size: cover; background-position: center; position: relative; }
+.td-prod-badge { position: absolute; top: 12px; left: 12px; background: var(--td-yellow); color: var(--td-dark); font-family: var(--td-font-heading); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; }
+.td-prod-info { padding: 20px; }
+.td-prod-info .td-brand { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #999; font-weight: 600; margin-bottom: 4px; }
+.td-prod-info h3 { font-size: 1.15rem; margin-bottom: 8px; color: var(--td-dark); }
+.td-prod-info p { font-size: 0.9rem; color: #666; margin-bottom: 16px; line-height: 1.5; }
+.td-prod-btn { display: block; width: 100%; text-align: center; padding: 13px; background: var(--td-dark); color: #fff; font-family: var(--td-font-heading); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 0 0 var(--td-radius) var(--td-radius); transition: var(--td-transition); }
+.td-prod-btn:hover { background: var(--td-yellow); color: var(--td-dark); }
+
+/* ── BRAND LOGOS ── */
+.td-brand-bar { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 50px; max-width: 1260px; margin: 0 auto; opacity: 0.7; }
+.td-brand-bar span { font-family: var(--td-font-heading); font-weight: 800; font-size: 1.6rem; text-transform: uppercase; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; }
+
+/* ── CTA ── */
+.td-cta { text-align: center; padding: 80px 24px; background: linear-gradient(135deg, var(--td-dark) 0%, #2a2a2a 100%); color: #fff; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); width: 100vw; }
+.td-cta h2 { font-size: 2.2rem; text-transform: uppercase; margin-bottom: 16px; }
+.td-cta p { color: rgba(255,255,255,0.7); max-width: 550px; margin: 0 auto 30px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .td-hero h1 { font-size: 2rem; }
+    .td-hero { min-height: 480px; }
+    .td-section, .td-section-alt, .td-section-dark { padding: 50px 16px; }
+    .td-cat-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .td-cat-card { height: 200px; }
+    .td-prod-grid { grid-template-columns: 1fr; }
+    .td-trust-grid { gap: 24px; }
+    .td-btn-outline { margin-left: 0; margin-top: 12px; }
+    .td-section-title h2 { font-size: 1.6rem; }
+}
+</style>
+
+<div class="td-shop">
+
+<!-- ════ HERO ════ -->
+<div class="td-hero">
+  <div class="td-hero-inner">
+    <div class="td-hero-badge">Webshop ToDoors</div>
+    <h1>Professionele <span>Deursystemen</span> &amp; Toegangstechniek</h1>
+    <p>Automatische schuifdeuren, draaideuren, smart locks, tag systemen en sensoren van topmerken. Alles voor de professionele installateur.</p>
+    <a href="#categorieën" class="td-btn td-btn-primary">Bekijk Assortiment</a>
+    <a href="/contact/" class="td-btn td-btn-outline">Offerte Aanvragen</a>
+  </div>
+</div>
+
+<!-- ════ TRUST BAR ════ -->
+<div class="td-trust">
+  <div class="td-trust-grid">
+    <div class="td-trust-item"><h4>24/7</h4><p>Service &amp; Support</p></div>
+    <div class="td-trust-item"><h4>VCA**</h4><p>Gecertificeerd</p></div>
+    <div class="td-trust-item"><h4>15+</h4><p>Jaar Ervaring</p></div>
+    <div class="td-trust-item"><h4>ISO</h4><p>Kwaliteitsnormen</p></div>
+    <div class="td-trust-item"><h4>NL</h4><p>Landelijke Dekking</p></div>
+  </div>
+</div>
+
+<!-- ════ CATEGORIEËN ════ -->
+<div id="categorieën" class="td-section">
+  <div class="td-wrap">
+    <div class="td-section-title">
+      <div class="td-line"></div>
+      <h2>Onze Productcategorieën</h2>
+      <p>Van automatische deuren tot slimme toegangssystemen — alles uit voorraad leverbaar met professioneel advies.</p>
+    </div>
+    <div class="td-cat-grid">
+      <div class="td-cat-card">
+        <div class="td-cat-bg" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600')"></div>
+        <a href="#schuifdeuren" class="td-cat-overlay"><h3>Automatische Schuifdeuren</h3><span>4 producten →</span></a>
+      </div>
+      <div class="td-cat-card">
+        <div class="td-cat-bg" style="background-image:url('https://images.unsplash.com/photo-1558002038-103792e0739d?auto=format&fit=crop&q=80&w=600')"></div>
+        <a href="#draaideuren" class="td-cat-overlay"><h3>Automatische Draaideuren</h3><span>5 producten →</span></a>
+      </div>
+      <div class="td-cat-card">
+        <div class="td-cat-bg" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&q=80&w=600')"></div>
+        <a href="#tedee" class="td-cat-overlay"><h3>Motorcilinders &amp; Smart Locks</h3><span>11 producten →</span></a>
+      </div>
+      <div class="td-cat-card">
+        <div class="td-cat-bg" style="background-image:url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=600')"></div>
+        <a href="#intratone" class="td-cat-overlay"><h3>Tag Systemen</h3><span>Intratone →</span></a>
+      </div>
+      <div class="td-cat-card">
+        <div class="td-cat-bg" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600')"></div>
+        <a href="#sensoren" class="td-cat-overlay"><h3>Sensoren</h3><span>BEA →</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ AUTOMATISCHE SCHUIFDEUREN ════ -->
+<div id="schuifdeuren" class="td-section-alt">
+  <div class="td-wrap">
+    <div class="td-section-title">
+      <div class="td-line"></div>
+      <h2>Automatische Schuifdeuren</h2>
+      <p>Geruisloze, betrouwbare schuifdeursystemen van Dormakaba en ToDoors. Geschikt voor elke toepassing.</p>
+    </div>
+    <div class="td-prod-grid">
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=500')">
+          <span class="td-prod-badge">Populair</span>
+        </div>
+        <div class="td-prod-info">
+          <div class="td-brand">Dormakaba</div>
+          <h3>ES200 Easy</h3>
+          <p>Compacte schuifdeurautomaat voor lichte tot middelzware deuren. Ideaal voor winkels, kantoren en openbare gebouwen. Eenvoudige installatie en programmering.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background-image:url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=500')">
+        </div>
+        <div class="td-prod-info">
+          <div class="td-brand">Dormakaba</div>
+          <h3>ES200</h3>
+          <p>Veelzijdige schuifdeurautomaat voor alle standaard toepassingen. Krachtige aandrijving tot 2x 120 kg vleugelsgewicht. Geschikt voor enkel- en dubbelvleugelige deuren met telescopische optie.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background-image:url('https://images.unsplash.com/photo-1517420812314-8e84b119346e?auto=format&fit=crop&q=80&w=500')">
+        </div>
+        <div class="td-prod-info">
+          <div class="td-brand">Dormakaba</div>
+          <h3>Proline Easy</h3>
+          <p>Instapsysteem voor automatische schuifdeuren met professionele prestaties. Compleet pakket inclusief profiel, aandrijving en besturing. Snel en eenvoudig te monteren.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background-image:url('https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80&w=500')">
+          <span class="td-prod-badge">ToDoors</span>
+        </div>
+        <div class="td-prod-info">
+          <div class="td-brand">ToDoors</div>
+          <h3>M-Pro</h3>
+          <p>Het eigen schuifdeursysteem van ToDoors. Krachtig, stil en betrouwbaar. Leverbaar in enkel- en dubbelvleugelig, inclusief telescopische uitvoering. Uitstekende prijs-kwaliteitverhouding.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════ AUTOMATISCHE DRAAIDEUREN ════ -->
+<div id="draaideuren" class="td-section">
+  <div class="td-wrap">
+    <div class="td-section-title">
+      <div class="td-line"></div>
+      <h2>Automatische Draaideuren</h2>
+      <p>Draaideurautomaten voor toegankelijke, comfortabele en veilige doorgangen. Van lichte binnendeuren tot zware buitendeuren.</p>
+    </div>
+    <div class="td-prod-grid">
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background-image:url('https://images.unsplash.com/photo-1558002038-103792e0739d?auto=format&fit=crop&q=80&w=500')">
+        </div>
+        <div class="td-prod-info">
+          <div class="td-brand">Dormakaba</div>
+          <h3>ED100</h3>
+          <p>Compacte draaideurautomaat voor lichte binnendeuren tot 100 kg. Fluisterstil dankzij gelijkstroommotor. Ideaal voor kantoren, verzorgingshuizen en openbare gebouwen. EN 16005-conform.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background-image:url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=500')">
+          <span class="td-prod-badge">Heavy Duty</span>
+        </div>
+        <div class="td-prod-info">
+          <div class="td-brand">Dormakaba</div>
+          <h3>ED250</h3>
+          <p>Krachtige draaideurautomaat voor zware deuren tot 250 kg. Geschikt voor intensief gebruik bij hoofdingangen, ziekenhuizen en publieke gebouwen. Robuust en betrouwbaar met uitgebreide veiligheidsfuncties.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background-image:url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=500')">
+        </div>
+        <div class="td-prod-info">
+          <div class="td-brand">G-U (Gretsch-Unitas)</div>
+          <h3>DTN80</h3>
+          <p>Universele draaideurautomaat met knik- of glijarm. Geschikt voor deuren tot 120 kg. Compact design met stille werking. Eenvoudige montage en programmering via display.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background-image:url('https://images.unsplash.com/photo-1564540586988-aa4e53ab3394?auto=format&fit=crop&q=80&w=500')">
+        </div>
+        <div class="td-prod-info">
+          <div class="td-brand">GEZE</div>
+          <h3>EMD-F</h3>
+          <p>Electromechanische vrijloopdeurdranger van GEZE. Opent de deur automatisch bij brand- of rookmelding. Combineert comfort van vrije doorgang met maximale brandveiligheid. CE-gecertificeerd.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=500')">
+          <span class="td-prod-badge">Premium</span>
+        </div>
+        <div class="td-prod-info">
+          <div class="td-brand">GEZE</div>
+          <h3>Powerturn</h3>
+          <p>De krachtigste draaideurautomaat van GEZE voor zware deuren tot 600 kg. Geschikt voor brede en hoge deuren in intensief gebruikte omgevingen. Slank design met enorme kracht. EN 16005-conform.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════ MERKEN BAR ════ -->
+<div class="td-section-dark">
+  <div class="td-wrap">
+    <div class="td-section-title">
+      <div class="td-line"></div>
+      <h2>Onze Merken</h2>
+      <p>Wij werken uitsluitend met A-merken uit de deurautomatisering en toegangscontrole.</p>
+    </div>
+    <div class="td-brand-bar">
+      <span>Dormakaba</span>
+      <span>ToDoors</span>
+      <span>GEZE</span>
+      <span>G-U</span>
+      <span>Tedee</span>
+      <span>Intratone</span>
+      <span>BEA</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════ TEDEE MOTORCILINDERS ════ -->
+<div id="tedee" class="td-section">
+  <div class="td-wrap">
+    <div class="td-section-title">
+      <div class="td-line"></div>
+      <h2>Motorcilinders &amp; Smart Locks</h2>
+      <p>Slimme sloten van Tedee: open uw deur met smartphone, vingerafdruk of pincode. Eenvoudig te installeren zonder boren.</p>
+    </div>
+
+    <h3 style="font-family:var(--td-font-heading);font-size:1.4rem;text-transform:uppercase;margin-bottom:24px;padding-left:4px;border-left:4px solid var(--td-yellow);padding-left:12px;">Smart Locks</h3>
+    <div class="td-prod-grid" style="margin-bottom:60px;">
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&q=80&w=500')">
+          <span class="td-prod-badge">Nieuw</span>
+        </div>
+        <div class="td-prod-info">
+          <div class="td-brand">Tedee</div>
+          <h3>Tedee GO</h3>
+          <p>Instapmodel smart lock met Bluetooth-bediening. Compact en eenvoudig te monteren op bestaande cilinders. Bediening via de Tedee-app. Automatisch vergrendelen bij weggaan.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&q=80&w=500')">
+          <span class="td-prod-badge">Populair</span>
+        </div>
+        <div class="td-prod-info">
+          <div class="td-brand">Tedee</div>
+          <h3>Tedee GO 2</h3>
+          <p>Verbeterde versie met snellere Bluetooth-verbinding en langere batterijduur. Compatibel met Apple HomeKit, Google Home en Amazon Alexa. Compact design in modern zwart of zilver.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&q=80&w=500')">
+          <span class="td-prod-badge">Premium</span>
+        </div>
+        <div class="td-prod-info">
+          <div class="td-brand">Tedee</div>
+          <h3>Tedee Pro</h3>
+          <p>Het topmodel met geintegreerde WiFi-bridge, premium materialen en de snelste responstijd. Volledige smart home-integratie zonder extra bridge. Ideaal voor woningen en bedrijfspanden.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+    </div>
+
+    <h3 style="font-family:var(--td-font-heading);font-size:1.4rem;text-transform:uppercase;margin-bottom:24px;padding-left:4px;border-left:4px solid var(--td-yellow);padding-left:12px;">Accessoires</h3>
+    <div class="td-prod-grid" style="margin-bottom:60px;">
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:2rem;color:#bbb;">BRIDGE</div>
+        <div class="td-prod-info">
+          <div class="td-brand">Tedee</div>
+          <h3>Tedee Bridge</h3>
+          <p>Verbindt uw Tedee-slot met het internet voor bediening op afstand. Ontvang meldingen, deel toegang en integreer met smart home systemen. Plug &amp; play installatie.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:1.6rem;color:#bbb;">SENSOR</div>
+        <div class="td-prod-info">
+          <div class="td-brand">Tedee</div>
+          <h3>Door Sensor</h3>
+          <p>Magnetische deursensor die detecteert of de deur open of dicht is. Stuurt real-time notificaties naar de Tedee-app. Voorkomt vergrendeling wanneer de deur openstaat.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:1.4rem;color:#bbb;">CILINDER</div>
+        <div class="td-prod-info">
+          <div class="td-brand">Tedee</div>
+          <h3>Cilinders &amp; Adapters</h3>
+          <p>Tedee-compatibele cilinders en adapters voor een naadloze installatie. Beschikbaar in diverse maten en uitvoeringen voor Europese profielcilinders. Modulair en eenvoudig aan te passen.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+    </div>
+
+    <h3 style="font-family:var(--td-font-heading);font-size:1.4rem;text-transform:uppercase;margin-bottom:24px;padding-left:4px;border-left:4px solid var(--td-yellow);padding-left:12px;">Toegangscontrole</h3>
+    <div class="td-prod-grid">
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:1.4rem;color:#bbb;">KEYPAD</div>
+        <div class="td-prod-info">
+          <div class="td-brand">Tedee</div>
+          <h3>Keypad PRO</h3>
+          <p>Waterdicht toetsenblok voor deurtoegang via pincode. Verlicht display, vandaalbestendig ontwerp. Ideaal voor huurwoningen, kantoren en Airbnb's. Eenvoudig te koppelen aan elk Tedee-slot.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:1.2rem;color:#bbb;">BIOMETRIC</div>
+        <div class="td-prod-info">
+          <div class="td-brand">Tedee</div>
+          <h3>Biometric Module</h3>
+          <p>Vingerafdruklezer voor snelle en veilige toegang. Slaat meerdere vingerafdrukken op. Weersbestendig en geschikt voor buiten. Directe koppeling met Tedee smart locks.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:1.2rem;color:#bbb;">RELAIS</div>
+        <div class="td-prod-info">
+          <div class="td-brand">BleBox</div>
+          <h3>Smart Relais Module</h3>
+          <p>WiFi-relaismodule voor het aansturen van poorten, garagedeuren en andere apparaten via de Tedee-app. Compact formaat voor inbouw in bestaande installaties.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:1.1rem;color:#bbb;">DRY CONTACT</div>
+        <div class="td-prod-info">
+          <div class="td-brand">Tedee</div>
+          <h3>Dry Contact</h3>
+          <p>Potentiaalvrij relaiscontact voor integratie met derde systemen zoals domotica, alarmsystemen en intercomsystemen. Universeel inzetbaar als schakelmodule.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════ INTRATONE TAG SYSTEMEN ════ -->
+<div id="intratone" class="td-section-alt">
+  <div class="td-wrap">
+    <div class="td-section-title">
+      <div class="td-line"></div>
+      <h2>Tag Systemen &amp; Intercom</h2>
+      <p>Intratone: cloudbeheerde toegangscontrole en intercomsystemen. Beheer badges op afstand, geen monteur nodig.</p>
+    </div>
+    <div class="td-prod-grid">
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:1.4rem;color:#bbb;">BADGE</div>
+        <div class="td-prod-info">
+          <div class="td-brand">Intratone</div>
+          <h3>RFID Badges (Keyfob)</h3>
+          <p>Compacte druppelvormige MIFARE-tag voor aan de sleutelbos. Beschikbaar in 8 kleuren. Uniek gecodeerd en op afstand te beheren via het Intratone-cloudplatform. Direct te deactiveren bij verlies.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:1.4rem;color:#bbb;">CARD</div>
+        <div class="td-prod-info">
+          <div class="td-brand">Intratone</div>
+          <h3>Badgekaarten (Creditcard)</h3>
+          <p>Platte RFID-kaart in standaard bankpasformaat (ISO 7810). Past in elke portemonnee. MIFARE 13,56 MHz technologie. Ideaal voor grotere wooncomplexen en bedrijven.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:1.2rem;color:#bbb;">STICKER</div>
+        <div class="td-prod-info">
+          <div class="td-brand">Intratone</div>
+          <h3>Stickerbadges</h3>
+          <p>Zelfklevende RFID-tag voor op telefoon, sleutelhanger of ander voorwerp. Discrete, ruimtebesparende oplossing. Dezelfde cloud-beheermogelijkheden als alle Intratone-badges.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:1.1rem;color:#bbb;">INTERCOM</div>
+        <div class="td-prod-info">
+          <div class="td-brand">Intratone</div>
+          <h3>Video-intercom Paneel</h3>
+          <p>GSM/4G-intercom met kleurencamera. Oproepmogelijkheid naar mobiele telefoon of Intratone-app. Geen bekabeling naar appartementen nodig. Scrollbare namenlijst op display.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:1.1rem;color:#bbb;">AUDIO</div>
+        <div class="td-prod-info">
+          <div class="td-brand">Intratone</div>
+          <h3>Audio-intercom Paneel</h3>
+          <p>GSM/4G audio-intercom zonder camera. Kosteneffectieve oplossing voor toegangscontrole. Geen binnenpost nodig; oproepen direct naar de telefoon van de bewoner.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:1.1rem;color:#bbb;">LEZER</div>
+        <div class="td-prod-info">
+          <div class="td-brand">Intratone</div>
+          <h3>Standalone Badgelezer</h3>
+          <p>Afzonderlijke RFID-lezer voor neveningangen, garagedeuren en fietsenstallingen. Werkt met alle Intratone-badges. Vandaalbestendig en weerbestendig ontwerp.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════ BEA SENSOREN ════ -->
+<div id="sensoren" class="td-section">
+  <div class="td-wrap">
+    <div class="td-section-title">
+      <div class="td-line"></div>
+      <h2>Sensoren voor Automatische Deuren</h2>
+      <p>BEA sensoren: betrouwbare activatie- en veiligheidssensoren conform EN 16005 voor elke deurinstallatie.</p>
+    </div>
+    <div class="td-prod-grid">
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:1.4rem;color:#bbb;">IXIO</div>
+        <div class="td-prod-info">
+          <div class="td-brand">BEA</div>
+          <h3>IXIO DT1</h3>
+          <p>Compacte dual-technology activatiesensor. Combineert microgolf met passief infrarood (PIR) voor betrouwbare bewegingsdetectie. Geschikt voor binnen- en buitentoepassingen. EN 16005-conform.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:1.4rem;color:#bbb;">IXIO</div>
+        <div class="td-prod-info">
+          <div class="td-brand">BEA</div>
+          <h3>IXIO DT3</h3>
+          <p>Geavanceerde dual-technology sensor met drie onafhankelijk instelbare detectiezones. Cross-traffic functie voorkomt ongewenste activeringen. Ideaal voor brede deuren en drukke doorgangen.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:1.1rem;color:#bbb;">ORASCAN</div>
+        <div class="td-prod-info">
+          <div class="td-brand">BEA</div>
+          <h3>ORASCAN</h3>
+          <p>LiDAR-gebaseerde 2-in-1 sensor voor activatie en veiligheid. Extreem nauwkeurig 2D-scanveld dat stilstaande personen en objecten detecteert. Immuun voor lichtomstandigheden.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:1rem;color:#bbb;">FLATSCAN</div>
+        <div class="td-prod-info">
+          <div class="td-brand">BEA</div>
+          <h3>FLATSCAN SW</h3>
+          <p>Actieve infrarood veiligheidssensor voor schuifdeuren. Creëert een onzichtbaar veiligheidsscherm tegen beknelling. Extreem plat design voor montage in het deurprofiel.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:1rem;color:#bbb;">FLATSCAN</div>
+        <div class="td-prod-info">
+          <div class="td-brand">BEA</div>
+          <h3>FLATSCAN 3D</h3>
+          <p>Premium 3D Time-of-Flight veiligheidssensor. Driedimensionale detectie ongeacht kleur of reflectie. Gecombineerde activatie- en veiligheidsfunctie. Hoogste veiligheidsniveau.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+      <div class="td-prod-card">
+        <div class="td-prod-img" style="background:#e8e8e8;display:flex;align-items:center;justify-content:center;font-family:var(--td-font-heading);font-size:0.85rem;color:#bbb;">COMBI KIT</div>
+        <div class="td-prod-info">
+          <div class="td-brand">BEA</div>
+          <h3>FLATSCAN COMBI KIT</h3>
+          <p>Complete sensoroplossing: activatie + veiligheid in één pakket. Vereenvoudigt installatie en voldoet direct aan EN 16005 veiligheidsnormen. Alles-in-één voor de professionele installateur.</p>
+        </div>
+        <a href="/informatieverzoek/" class="td-prod-btn">Offerte Aanvragen</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════ CTA ════ -->
+<div class="td-cta">
+  <h2>Klaar om te bestellen?</h2>
+  <p>Neem contact op voor een vrijblijvende offerte op maat. Ons team van specialisten helpt u graag bij het kiezen van de juiste oplossing.</p>
+  <a href="/informatieverzoek/" class="td-btn td-btn-primary">Offerte Aanvragen</a>
+  <a href="tel:+31858200636" class="td-btn td-btn-outline" style="margin-left:12px;">Bel: 085 - 820 0636</a>
+</div>
+
+</div>
