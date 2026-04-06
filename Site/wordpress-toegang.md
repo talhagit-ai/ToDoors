@@ -6,7 +6,7 @@
 
 ## REST API Authenticatie
 - **Gebruikersnaam:** todoors
-- **Application Password:** fBj6 8x3p yT0c fK0m SG3P vS2p
+- **Application Password:** 30NS kLF9 cez0 Zq0D PDbb 68al
 
 ## Technische details
 - **Platform:** WordPress + GoodLayers/RealFactory theme

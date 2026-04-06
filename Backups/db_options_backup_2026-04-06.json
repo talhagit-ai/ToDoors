@@ -1,0 +1,87 @@
+{
+    "widget_block": {
+        "_multiwidget": 1,
+        "19": {
+            "content": "<!-- wp:html --><h3 class=\"realfactory-widget-title\">Waarom ToDoors?</h3><ul style=\"margin:0; padding:0; list-style:none; line-height:2;\"><li style=\"font-size:14px; color:#b9b9b9;\"><i class=\"fa fa-check\" style=\"color:#f7c02e; margin-right:8px;\"></i>Landelijke dekking, kwalitatieve service</li><li style=\"font-size:14px; color:#b9b9b9;\"><i class=\"fa fa-check\" style=\"color:#f7c02e; margin-right:8px;\"></i>Oplossingen voor elk probleem beschikbaar</li><li style=\"font-size:14px; color:#b9b9b9;\"><i class=\"fa fa-check\" style=\"color:#f7c02e; margin-right:8px;\"></i>24/7 beschikbaar met snelle reactietijden</li><li style=\"font-size:14px; color:#b9b9b9;\"><i class=\"fa fa-check\" style=\"color:#f7c02e; margin-right:8px;\"></i>Klantvriendelijkheid heeft de hoogste prioriteit</li></ul><!-- /wp:html -->"
+        }
+    },
+    "sidebars_widgets": {
+        "wp_inactive_widgets": [
+            "media_image-2",
+            "block-2",
+            "block-3",
+            "block-4",
+            "block-5",
+            "block-6"
+        ],
+        "gdlr-core-sidebar-preset": [],
+        "footer-1": [
+            "text-3"
+        ],
+        "footer-2": [
+            "block-20",
+            "block-19"
+        ],
+        "footer-3": [
+            "text-7"
+        ],
+        "footer-4": [],
+        "elements": [],
+        "blog": [],
+        "blog-left": [
+            "search-3",
+            "text-4",
+            "recent-posts-4",
+            "gdlr-core-portfolio-slider-widget-2"
+        ],
+        "blog-right": [
+            "text-5",
+            "recent-comments-4",
+            "tag_cloud-4"
+        ],
+        "market-sectors": [
+            "nav_menu-2",
+            "nav_menu-3"
+        ],
+        "shop": [],
+        "array_version": 3
+    },
+    "widget_text": {
+        "1": [],
+        "2": {
+            "title": "Text Widget",
+            "text": "Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui. Etiam porta sem malesuada.",
+            "filter": false
+        },
+        "3": {
+            "title": "",
+            "text": "[gdlr_core_space height=\"-2px\"]\n<img src=\"https://www.todoors.nl/wp-content/uploads/2023/09/ToDoors-logo-only-new-site-e1694785136197.png\" alt=\"\"/> \n[gdlr_core_space height=\"7px\"]\n\nAutomatische deuren die jouw toegang transformeren met gemak en stijl",
+            "filter": false,
+            "visual": false
+        },
+        "4": {
+            "title": "About Us",
+            "text": "Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui.",
+            "filter": false
+        },
+        "5": {
+            "title": "Text Widget",
+            "text": "Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui. Etiam porta sem malesuada.",
+            "filter": false
+        },
+        "6": {
+            "title": "",
+            "text": "[gdlr_core_button button-text=\"Contact\" border-radius=\"3px\" background-color=\"#222\" button-background=\"solid\" button-link=''www.todoors.nl/contact/\" button-link-target=\"_parent\" margin-right=\"20px\" ]",
+            "filter": true,
+            "visual": true
+        },
+        "7": {
+            "title": "Contact Info",
+            "text": "[gdlr_core_icon icon=\"fa fa-location-arrow\" size=\"20px\" color=\"#f7c02e\" margin-left=\"0px\" margin-right=\"10px\" ] Artemisweg 115I, Lelystad\n[gdlr_core_space height=\"-6px\"]\n[gdlr_core_icon icon=\"fa fa-phone\" size=\"20px\" color=\"#f7c02e\" margin-left=\"\" margin-right=\"10px\" ] +31 6 84 30 5663\n[gdlr_core_space height=\"-6px\"]\n[gdlr_core_icon icon=\"fa fa-envelope-o\" size=\"20px\" color=\"#f7c02e\" margin-left=\"0px\" margin-right=\"10px\" ] info@todoors.nl\n\nBezoek adres/showroom alleen op afspraak",
+            "filter": true,
+            "visual": true
+        },
+        "_multiwidget": 1
+    },
+    "snapshot_date": "2026-04-06 16:10:57"
+}

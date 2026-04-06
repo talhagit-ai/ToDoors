@@ -19,6 +19,17 @@ Alle actieve PHP-snippets die draaien op todoors.nl via de Code Snippets plugin.
 | 28 | ToDoors Google Reviews - Over Ons | Google reviews op de Over Ons pagina |
 | 29 | ToDoors Benefits Layout Fix | Fix voor voordelen-grid layout |
 | 34-47 | Hulp-snippets | Tijdelijke API-endpoints voor beheer |
+| 50 | ToDoors Remove Dead 404 Pages | Verwijdert /diensten, /faq, /blog nav-items |
+| 51 | ToDoors Remove Full Service | Verwijdert Full Service pakket uit servicepagina |
+| 52 | ToDoors Remove Stats Counters | Verwijdert 0+ tellers van Over-Ons pagina |
+| 54 | ToDoors Restore Service Packages | Herstelt 3 onderhoudscontracten op servicepagina |
+| 55 | ToDoors Fix Glijarm Copy-Paste | Corrigeert "schuifdeuren" → "draaideuren met glijarm" |
+| 59 | ToDoors Repair Copyright Serialization | Herstelt geserialiseerde copyright optie |
+| 60 | ToDoors Fix Verbeterde Typo | Corrigeert "Verbeterede" → "Verbeterde" op Deurdrangers |
+| 61 | ToDoors Fix Onmogelijke Belofte | Vervangt juridisch riskante belofte op Over-Ons |
+| 62-68 | Kortom fixes | Vervangen van "Kortom" door "Waarom ToDoors?" (zie snippet 81) |
+| 79 | ToDoors Reconstruct Footer Kortom | Herstelt verdwenen footer sectie |
+| 81 | ToDoors Style Footer Waarom ToDoors | Gestyled footer blok met vinkjes en thema-stijl |
 
 ## Pagina ID's
 
