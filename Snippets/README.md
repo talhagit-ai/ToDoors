@@ -30,6 +30,11 @@ Alle actieve PHP-snippets die draaien op todoors.nl via de Code Snippets plugin.
 | 62-68 | Kortom fixes | Vervangen van "Kortom" door "Waarom ToDoors?" (zie snippet 81) |
 | 79 | ToDoors Reconstruct Footer Kortom | Herstelt verdwenen footer sectie |
 | 81 | ToDoors Style Footer Waarom ToDoors | Gestyled footer blok met vinkjes en thema-stijl |
+| 82 | ToDoors Fix Duplicate Title | Verwijdert dubbele &lt;title&gt; tag van thema, behoudt Yoast versie |
+| 83 | ToDoors Set Meta Descriptions | Voegt meta descriptions toe aan alle hoofdpagina's via Yoast SEO |
+| 84 | ToDoors Schema Markup | LocalBusiness JSON-LD schema voor Google rich snippets |
+| 85 | ToDoors Add Lelystad Copy | Voegt Lelystad/Flevoland toe aan homepage en Over Ons tekst |
+| 86 | ToDoors Fix Guarantee SLA | Vervangt vage garantietekst door concrete SLA: 1 uur terugbellen, 2 werkdagen afspraak |
 
 ## Pagina ID's
 
