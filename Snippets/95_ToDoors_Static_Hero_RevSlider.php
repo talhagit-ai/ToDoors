@@ -5,7 +5,8 @@
  * Scope: frontend
  *
  * Exact replica van RevSlider 10 (slider "Main 1").
- * Breekt uit Elementor container via JS (zoals RevSlider dat doet).
+ * Vervangt de hele container inclusief boxed-wrapper op het juiste
+ * nesting-niveau zodat de hero echt full-width is — geen JS nodig.
  */
 
 add_action('wp_enqueue_scripts', function() {
@@ -21,14 +22,14 @@ add_action('template_redirect', function() {
     ob_start(function($buffer) {
         $hero = '
 <style>
-#tdh{position:relative;height:100vh;min-height:700px;background-color:#262626;overflow:hidden;}
+#tdh{position:relative;width:100%;height:100vh;min-height:700px;background-color:#262626;overflow:hidden;}
 #tdh img.tdh-bg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
 #tdh .tdh-wrap{position:absolute;top:0;left:0;right:0;bottom:0;}
 #tdh .tdh-inner{position:relative;height:100%;max-width:1180px;margin:0 auto;}
 #tdh .tdh-t1{position:absolute;top:calc(50% - 156px);left:24px;font-family:Roboto,sans-serif;font-size:50px;font-weight:400;color:rgba(247,247,247,1);line-height:1;text-shadow:2px 2px 0 #000;white-space:nowrap;}
 #tdh .tdh-t2{position:absolute;top:calc(50% - 70px);left:17px;font-family:Roboto,sans-serif;font-size:76px;font-weight:700;color:#ffcc00;line-height:1;white-space:nowrap;}
 #tdh .tdh-t3{position:absolute;top:calc(50% + 20px);left:24px;width:666px;max-width:calc(100% - 48px);font-family:Roboto,sans-serif;font-size:20px;font-weight:400;color:rgba(255,255,255,1);line-height:1.5;text-shadow:2px 2px 0 #000;}
-#tdh .tdh-btn{position:absolute;top:calc(50% + 100px);left:26px;display:inline-block;padding:17px 34px;background:rgba(248,193,44,1);color:rgba(10,10,10,1);font-family:Roboto,sans-serif;font-size:14px;font-weight:600;text-decoration:none;border-radius:3px;line-height:17px;cursor:pointer;}
+#tdh .tdh-btn{position:absolute;top:calc(50% + 100px);left:26px;display:inline-block;padding:17px 34px;background:rgba(248,193,44,1);color:rgba(10,10,10,1);font-family:Roboto,sans-serif;font-size:14px;font-weight:600;text-decoration:none;border-radius:3px;line-height:17px;}
 #tdh .tdh-btn:hover{background:#f7cc56;}
 @media(max-width:480px){
   #tdh .tdh-t1{top:calc(50% - 149px);left:42px;font-size:43px;}
@@ -47,25 +48,12 @@ add_action('template_redirect', function() {
       <a class="tdh-btn" href="https://www.todoors.nl/over-ons/">Meer weten</a>
     </div>
   </div>
-</div>
-<script>
-(function(){
-  function tdhFix(){
-    var h=document.getElementById("tdh");
-    if(!h)return;
-    var r=h.getBoundingClientRect();
-    var offset=r.left+window.scrollX;
-    h.style.marginLeft=(-offset)+"px";
-    h.style.width=window.innerWidth+"px";
-  }
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",tdhFix);}
-  else{tdhFix();}
-  window.addEventListener("resize",tdhFix);
-})();
-</script>';
+</div>';
 
+        // Vervang de HELE realfactory-content-container (die de slider bevat) met de hero.
+        // Die container zit in realfactory-page-wrapper — dus daarna is hero full-width.
         return preg_replace(
-            '/<rs-module-wrap[^>]*>[\s\S]*?<\/rs-module-wrap>/',
+            '/<div class="realfactory-content-container realfactory-container">[\s\S]*?(?=<div class="gdlr-core-page-builder-body)/',
             $hero,
             $buffer
         );
