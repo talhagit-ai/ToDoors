@@ -5,10 +5,9 @@
  * Scope: frontend
  *
  * Exact replica van RevSlider 10 (slider "Main 1").
- * Zelfde achtergrond, tekst, kleuren, posities en afmetingen.
+ * Breekt uit Elementor container via JS (zoals RevSlider dat doet).
  */
 
-// Verwijder RevSlider JS/CSS op de homepage
 add_action('wp_enqueue_scripts', function() {
     if (!is_front_page()) return;
     wp_dequeue_script('revslider');
@@ -16,14 +15,13 @@ add_action('wp_enqueue_scripts', function() {
     wp_dequeue_style('revslider-front');
 }, 100);
 
-// Vervang slider via output buffer op de homepage
 add_action('template_redirect', function() {
     if (!is_front_page()) return;
 
     ob_start(function($buffer) {
         $hero = '
 <style>
-#tdh{position:relative;width:100%;height:100vh;min-height:700px;background-color:#262626;overflow:hidden;}
+#tdh{position:relative;height:100vh;min-height:700px;background-color:#262626;overflow:hidden;}
 #tdh img.tdh-bg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
 #tdh .tdh-wrap{position:absolute;top:0;left:0;right:0;bottom:0;}
 #tdh .tdh-inner{position:relative;height:100%;max-width:1180px;margin:0 auto;}
@@ -33,9 +31,8 @@ add_action('template_redirect', function() {
 #tdh .tdh-btn{position:absolute;top:calc(50% + 100px);left:26px;display:inline-block;padding:17px 34px;background:rgba(248,193,44,1);color:rgba(10,10,10,1);font-family:Roboto,sans-serif;font-size:14px;font-weight:600;text-decoration:none;border-radius:3px;line-height:17px;cursor:pointer;}
 #tdh .tdh-btn:hover{background:#f7cc56;}
 @media(max-width:480px){
-  #tdh{min-height:700px;}
   #tdh .tdh-t1{top:calc(50% - 149px);left:42px;font-size:43px;}
-  #tdh .tdh-t2{top:calc(50% - 76px);left:38px;font-size:76px;max-width:441px;}
+  #tdh .tdh-t2{top:calc(50% - 76px);left:38px;max-width:441px;}
   #tdh .tdh-t3{top:calc(50% + 17px);left:41px;width:404px;font-size:17px;}
   #tdh .tdh-btn{top:calc(50% + 109px);left:43px;padding:13px 27px;}
 }
@@ -50,7 +47,22 @@ add_action('template_redirect', function() {
       <a class="tdh-btn" href="https://www.todoors.nl/over-ons/">Meer weten</a>
     </div>
   </div>
-</div>';
+</div>
+<script>
+(function(){
+  function tdhFix(){
+    var h=document.getElementById("tdh");
+    if(!h)return;
+    var r=h.getBoundingClientRect();
+    var offset=r.left+window.scrollX;
+    h.style.marginLeft=(-offset)+"px";
+    h.style.width=window.innerWidth+"px";
+  }
+  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",tdhFix);}
+  else{tdhFix();}
+  window.addEventListener("resize",tdhFix);
+})();
+</script>';
 
         return preg_replace(
             '/<rs-module-wrap[^>]*>[\s\S]*?<\/rs-module-wrap>/',
