@@ -35,6 +35,7 @@ Alle actieve PHP-snippets die draaien op todoors.nl via de Code Snippets plugin.
 | 84 | ToDoors Schema Markup | LocalBusiness JSON-LD schema voor Google rich snippets |
 | 85 | ToDoors Add Lelystad Copy | Voegt Lelystad/Flevoland toe aan homepage en Over Ons tekst |
 | 86 | ToDoors Fix Guarantee SLA | Vervangt vage garantietekst door concrete SLA: 1 uur terugbellen, 2 werkdagen afspraak |
+| 87 | ToDoors Certificates Section | Uitlegblok voor EN16005 en NEN3140 op de servicepagina |
 
 ## Pagina ID's
 
