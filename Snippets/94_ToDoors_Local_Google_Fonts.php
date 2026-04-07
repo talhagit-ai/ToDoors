@@ -31,12 +31,16 @@ add_action('wp_head', function() {
 }, 1);
 
 // Verwijder ook via output buffer als de dequeue niet werkt
+// Verwijdert tevens de dns-prefetch voor fonts.googleapis.com
 add_action('template_redirect', function() {
     ob_start(function($buffer) {
-        return str_replace(
+        $buffer = str_replace(
             "<link rel='stylesheet' id='realfactory-google-fonts-css' href='//fonts.googleapis.com/css?family=Roboto:400&amp;display=swap' type='text/css' media='all' />",
             '',
             $buffer
         );
+        $buffer = str_replace("<link rel='dns-prefetch' href='//fonts.googleapis.com' />\n", '', $buffer);
+        $buffer = str_replace("<link rel='dns-prefetch' href='//fonts.googleapis.com' />", '', $buffer);
+        return $buffer;
     });
 }, 1);
