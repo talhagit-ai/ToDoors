@@ -46,6 +46,10 @@ Alle actieve PHP-snippets die draaien op todoors.nl via de Code Snippets plugin.
 | 134 | ToDoors Heartbeat Tempering | Heartbeat interval naar 60s + deregister op frontend |
 | 135 | ToDoors Preconnect Hints | Preconnect + dns-prefetch voor Google Tag Manager, LeadInfo, GA |
 | 136 | ToDoors Lazy Iframes | loading=lazy op alle iframes (Maps, YouTube, oEmbeds) |
+| 137 | ToDoors Autoload Analysis | REST endpoint `/wp-json/todoors/v1/autoload-top` - toont top 20 autoloaded options |
+| 138 | ToDoors Revisions and Trash Limits | Max 3 revisies/post, trash 7 dagen, autosave 120s |
+| 139 | ToDoors Disable Autoload Demo Data | autoload=no voor RealFactory demo + oude theme opties (1.28 MB bespaard) |
+| 141 | ToDoors Disable Autoload Orphaned Plugin Data | autoload=no voor Hummingbird/AIOSEO orphaned data (122 KB bespaard) |
 
 ## Performance overhaul (2026-04-13/14)
 
