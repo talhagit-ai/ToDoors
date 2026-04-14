@@ -50,6 +50,8 @@ Alle actieve PHP-snippets die draaien op todoors.nl via de Code Snippets plugin.
 | 138 | ToDoors Revisions and Trash Limits | Max 3 revisies/post, trash 7 dagen, autosave 120s |
 | 139 | ToDoors Disable Autoload Demo Data | autoload=no voor RealFactory demo + oude theme opties (1.28 MB bespaard) |
 | 141 | ToDoors Disable Autoload Orphaned Plugin Data | autoload=no voor Hummingbird/AIOSEO orphaned data (122 KB bespaard) |
+| 143 | ToDoors LiteSpeed Advanced Optimization v2 | Vervangt kapotte snippet 105: lazy load, CSS/JS combine, query string removal via correcte LiteSpeed\\Conf API |
+| 144 | ToDoors LiteSpeed Optimization Phase 3 | JS defer, iframe lazy (LiteSpeed), WebP srcset, auto image optimization |
 
 ## Performance overhaul (2026-04-13/14)
 
