@@ -38,35 +38,6 @@ Alle actieve PHP-snippets die draaien op todoors.nl via de Code Snippets plugin.
 | 87 | ToDoors Certificates Section | Uitlegblok voor EN16005 en NEN3140 op de servicepagina |
 | 88 | ToDoors Remove Pricing Elektronische Toegang | Verwijdert Prijzen & Offerte sectie van Elektronische Toegang |
 | 89 | ToDoors Fix Contact Links | Vervangt alle /informatieverzoek/ links door /contact/ |
-| 105 | ToDoors Enable LiteSpeed Optimization | Activeert CSS/JS minify + combine + JS defer in LiteSpeed (eenmalig, run-once) |
-| 128 | ToDoors Defer Third Party Tracking | Verplaatst LeadInfo + Google Ads naar na window.load via requestIdleCallback |
-| 131 | ToDoors RevSlider Global Disable | Deregistreert alle RevSlider scripts/styles globaal (~150 KB JS/CSS bespaard) |
-| 132 | ToDoors WPForms Conditional Load | Laadt WPForms + reCAPTCHA alleen op /contact/ en /informatieverzoek/ |
-| 133 | ToDoors WordPress Bloat Killer | Verwijdert emoji-script, jQuery Migrate, Dashicons frontend, wp-embed, generator/RSD meta tags |
-| 134 | ToDoors Heartbeat Tempering | Heartbeat interval naar 60s + deregister op frontend |
-| 135 | ToDoors Preconnect Hints | Preconnect + dns-prefetch voor Google Tag Manager, LeadInfo, GA |
-| 136 | ToDoors Lazy Iframes | loading=lazy op alle iframes (Maps, YouTube, oEmbeds) |
-| 137 | ToDoors Autoload Analysis | REST endpoint `/wp-json/todoors/v1/autoload-top` - toont top 20 autoloaded options |
-| 138 | ToDoors Revisions and Trash Limits | Max 3 revisies/post, trash 7 dagen, autosave 120s |
-| 139 | ToDoors Disable Autoload Demo Data | autoload=no voor RealFactory demo + oude theme opties (1.28 MB bespaard) |
-| 141 | ToDoors Disable Autoload Orphaned Plugin Data | autoload=no voor Hummingbird/AIOSEO orphaned data (122 KB bespaard) |
-| 143 | ToDoors LiteSpeed Advanced Optimization v2 | Vervangt kapotte snippet 105: lazy load, CSS/JS combine, query string removal via correcte LiteSpeed\\Conf API |
-| 144 | ToDoors LiteSpeed Optimization Phase 3 | JS defer, iframe lazy (LiteSpeed), WebP srcset, auto image optimization |
-
-## Performance overhaul (2026-04-13/14)
-
-**Uitgeschakeld** — debug- en cache-purge-snippets die LiteSpeed-cache effectief uitschakelden + onnodige DB-queries deden bij elke paginalading:
-
-| ID | Naam | Reden |
-|----|------|-------|
-| 53 | Purge Cache Over-Ons | `litespeed_purge_all` bij elke `init` → cache werkte nooit |
-| 72 | ToDoors Aggressive Cache Purge | Purgede 14 posts cache bij elke `init` |
-| 63 | Debug Kortom Check | DB-query + error_log bij elke init |
-| 70 | ToDoors Revert Kortom Fix | get_option-query bij elke init |
-| 39 | (leeg) | Geen code, kon weg |
-| 34, 42–45, 47, 66, 67, 69, 71, 73, 74, 76, 77, 78, 82, 106 | Diverse Debug-snippets | REST-routes registreren bij elke request |
-
-**Resultaat:** LiteSpeed page-cache werkt nu daadwerkelijk, geen onnodige DB-queries meer per request. Site voelt direct sneller. Rollback: snippets reactiveren via Code Snippets admin UI.
 
 ## Pagina ID's
 
