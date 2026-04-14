@@ -42,6 +42,10 @@ Alle actieve PHP-snippets die draaien op todoors.nl via de Code Snippets plugin.
 | 128 | ToDoors Defer Third Party Tracking | Verplaatst LeadInfo + Google Ads naar na window.load via requestIdleCallback |
 | 131 | ToDoors RevSlider Global Disable | Deregistreert alle RevSlider scripts/styles globaal (~150 KB JS/CSS bespaard) |
 | 132 | ToDoors WPForms Conditional Load | Laadt WPForms + reCAPTCHA alleen op /contact/ en /informatieverzoek/ |
+| 133 | ToDoors WordPress Bloat Killer | Verwijdert emoji-script, jQuery Migrate, Dashicons frontend, wp-embed, generator/RSD meta tags |
+| 134 | ToDoors Heartbeat Tempering | Heartbeat interval naar 60s + deregister op frontend |
+| 135 | ToDoors Preconnect Hints | Preconnect + dns-prefetch voor Google Tag Manager, LeadInfo, GA |
+| 136 | ToDoors Lazy Iframes | loading=lazy op alle iframes (Maps, YouTube, oEmbeds) |
 
 ## Performance overhaul (2026-04-13/14)
 
