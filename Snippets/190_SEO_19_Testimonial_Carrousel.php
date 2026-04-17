@@ -1,7 +1,10 @@
 <?php
-// Snippet ID: 190
-// Name: SEO_19_Testimonial_Carrousel
-// Active: True
+/**
+ * SEO_19_Testimonial_Carrousel
+ * 
+ * Snippet ID: 190
+ * Active: True
+ */
 
 
 // SEO_19_Testimonial_Carrousel — 3 klantreviews carousel + trust row boven de vouw op homepage
@@ -26,7 +29,7 @@ add_action('wp_head', function() {
 .td-reviewer{font-size:13px;font-weight:700;color:#1a1a2e;}
 .td-reviewer-role{font-size:12px;color:#888;}
 .td-reviews-cta{margin-top:36px;}
-.td-reviews-cta a{display:inline-block;background:#2d6a4f;color:#fff;padding:13px 30px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;}
+#td-testimonials .td-reviews-cta a,#td-testimonials .td-reviews-cta a:link,#td-testimonials .td-reviews-cta a:visited,#td-testimonials .td-reviews-cta a:hover,#td-testimonials .td-reviews-cta a:active{display:inline-block;background:#2d6a4f !important;color:#ffffff !important;padding:13px 30px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none !important;}
 </style>
 CSS;
 }, 1);
@@ -37,7 +40,6 @@ add_action('wp_footer', function() {
 <div id="td-trust-strip">
   <span>EN16005 gecertificeerd</span>
   <span>NEN3140 gecertificeerd</span>
-  <span>Installatie binnen 2 werkdagen</span>
   <span>Landelijke dekking</span>
   <span>24/7 storingsdienst</span>
 </div>
@@ -75,3 +77,4 @@ add_action('wp_footer', function() {
 </section>
 HTML;
 }, 20);
+
